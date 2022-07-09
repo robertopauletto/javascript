@@ -897,7 +897,7 @@ Altre Guide di Stile
     ```
 
   <a name="functions--signature-invocation-indentation"></a>
-  - [7.15](#functions--signature-invocation-indentation) Functions with multiline signatures, or invocations, should be indented just like every other multiline list in this guide: with each item on a line by itself, with a trailing comma on the last item. eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
+  - [7.15](#functions--signature-invocation-indentation) Funzioni con firma su più righe, o invocazioni, dovrebbero essere indentate proprio come qualsiasi altra lista su più righe in questa guida: con ciascun elemento su una riga a se stante, con una virgola in coda all'ultimo elemento. eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
 
     ```javascript
     // male
@@ -931,14 +931,14 @@ Altre Guide di Stile
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Arrow Functions
+## Funzioni Arrow 
 
   <a name="arrows--use-them"></a><a name="8.1"></a>
-  - [8.1](#arrows--use-them) When you must Usare an anonymous function (as when passing an inline callback), Usare arrow function notation. eslint: [`prefer-arrow-callback`](https://eslint.org/docs/rules/prefer-arrow-callback), [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
+  - [8.1](#arrows--use-them) Quando si deve usare una funzione anonima (come per passare un callback in linea) usare la notazione di funzione arro. eslint: [`prefer-arrow-callback`](https://eslint.org/docs/rules/prefer-arrow-callback), [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
 
-    > Perche? It creates a version of the function that executes in the context of `this`, which is usually what you want, and is a more concise syntax.
+    > Perche? Crea una versione della funzione che viene eseguita nel contesto di `this`, il che in genere è quallo che si vuole, e ha una sintassi più concisa.
 
-    > Why not? If you have a fairly complicated function, you might move that logic out into its own named function expression.
+    > Perchè no? Se si ha una funzione piuttosto complicata, si potrebbe spostare quella logica all'esterno nella sua propria espressione di funzione denominata.
 
     ```javascript
     // male
@@ -955,9 +955,9 @@ Altre Guide di Stile
     ```
 
   <a name="arrows--implicit-return"></a><a name="8.2"></a>
-  - [8.2](#arrows--implicit-return) If the function body consists of a single statement returning an [expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) without side effects, omit the braces and Usare the implicit return. Otherwise, keep the braces and Usare a `return` statement. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens), [`arrow-body-style`](https://eslint.org/docs/rules/arrow-body-style)
+  - [8.2](#arrows--implicit-return) Se il corpo di una funzione ritorna una [espressione](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) senza effetti collaterali, omettere le parentesi graffe e usare il return implicito. Altrimenti mantenere le graffe e usare una istruzione `return`. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens), [`arrow-body-style`](https://eslint.org/docs/rules/arrow-body-style)
 
-    > Perche? Syntactic sugar. It reads well when multiple functions are chained together.
+    > Perche? Zucchero sintattico. C'è più leggibilità quando le funzioni sono concatenate.
 
     ```javascript
     // male
@@ -980,7 +980,7 @@ Altre Guide di Stile
       [index]: number,
     }));
 
-    // No implicit return with side effects
+    // Nessun return implicito con effetti collaterali
     function foo(callback) {
       const val = callback();
       if (val === true) {
@@ -1000,9 +1000,9 @@ Altre Guide di Stile
     ```
 
   <a name="arrows--paren-wrap"></a><a name="8.3"></a>
-  - [8.3](#arrows--paren-wrap) In case the expression spans over multiple lines, wrap it in parentheses for better readability.
+  - [8.3](#arrows--paren-wrap) Se l'espressione si trova su più righe, racchiuderla tra parentesi per una migliore leggibilità.
 
-    > Perche? It shows clearly where the function starts and ends.
+    > Perche? Mostra chiaramente dove inizia e finisce la funzione.
 
     ```javascript
     // male
@@ -1022,9 +1022,9 @@ Altre Guide di Stile
     ```
 
   <a name="arrows--one-arg-parens"></a><a name="8.4"></a>
-  - [8.4](#arrows--one-arg-parens) Always include parentheses around arguments for clarity and consistency. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens)
+  - [8.4](#arrows--one-arg-parens) Racchiudere sempre tra parentesi gli argomenti per chiarezza e consistenza. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens)
 
-    > Perche? Minimizes diff churn when adding or removing arguments.
+    > Perche? Minimizza differenze quando si aggiungono o rimuovono gli argomenti.
 
     ```javascript
     // male
@@ -1057,7 +1057,7 @@ Altre Guide di Stile
     ```
 
   <a name="arrows--confusing"></a><a name="8.5"></a>
-  - [8.5](#arrows--confusing) Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`). eslint: [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow)
+  - [8.5](#arrows--confusing) Evitare di confondere la sintassi delle funzioni arrow (`=>`) con gli operatori di confronto (`<=`, `>=`). eslint: [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow)
 
     ```javascript
     // male
@@ -1077,7 +1077,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--implicit-arrow-linebreak"></a>
-  - [8.6](#whitespace--implicit-arrow-linebreak) Enforce the location of arrow function bodies with implicit returns. eslint: [`implicit-arrow-linebreak`](https://eslint.org/docs/rules/implicit-arrow-linebreak)
+  - [8.6](#whitespace--implicit-arrow-linebreak) Imporre la posizione dei corpi delle funzioni freccia con return impliciti. eslint: [`implicit-arrow-linebreak`](https://eslint.org/docs/rules/implicit-arrow-linebreak)
 
     ```javascript
     // male
@@ -1097,12 +1097,12 @@ Altre Guide di Stile
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Classes & Constructors
+## Classi & Costruttori
 
   <a name="constructors--use-class"></a><a name="9.1"></a>
-  - [9.1](#constructors--use-class) Always Usare `class`. Avoid manipulating `prototype` directly.
+  - [9.1](#constructors--use-class) Usare sempre `class`. Evitare di manipolare direttamente `prototype`.
 
-    > Perche? `class` syntax is more concise and easier to reason about.
+    > Perche? La sintassi `class` è più concisa e più facile da ragionare.
 
     ```javascript
     // male
@@ -1129,9 +1129,9 @@ Altre Guide di Stile
     ```
 
   <a name="constructors--extends"></a><a name="9.2"></a>
-  - [9.2](#constructors--extends) Usare `extends` for inheritance.
+  - [9.2](#constructors--extends) Usare `extends` per ereditarietà.
 
-    > Perche? It is a built-in way to inherit prototype functionality without breaking `instanceof`.
+    > Perche? E' un modo built-in per ereditare la funzionalità di prototipo senza rompere `instanceof`.
 
     ```javascript
     // male
@@ -1153,7 +1153,7 @@ Altre Guide di Stile
     ```
 
   <a name="constructors--chaining"></a><a name="9.3"></a>
-  - [9.3](#constructors--chaining) Methods can return `this` to help with method chaining.
+  - [9.3](#constructors--chaining) I metodi possono ritornare `this` per facilitare il concatenamento dei metodi.
 
     ```javascript
     // male
@@ -1190,7 +1190,7 @@ Altre Guide di Stile
     ```
 
   <a name="constructors--tostring"></a><a name="9.4"></a>
-  - [9.4](#constructors--tostring) It’s okay to write a custom `toString()` method, just make sure it works successfully and causes no side effects.
+  - [9.4](#constructors--tostring) Va bene scrivere un metodo `toString()` personalizzato, solo assicurarsi che funzioni con successo e non causi effetti collaterali.
 
     ```javascript
     class Jedi {
@@ -1209,7 +1209,7 @@ Altre Guide di Stile
     ```
 
   <a name="constructors--no-useless"></a><a name="9.5"></a>
-  - [9.5](#constructors--no-useless) Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary. eslint: [`no-useless-constructor`](https://eslint.org/docs/rules/no-useless-constructor)
+  - [9.5](#constructors--no-useless) Le classi hanno un costruttore predefinito se non ne viene specificato uno. Una funzione costruttore vuota o una che semplicemente delega a una classe genitore non è necessaria. eslint: [`no-useless-constructor`](https://eslint.org/docs/rules/no-useless-constructor)
 
     ```javascript
     // male
@@ -1238,9 +1238,9 @@ Altre Guide di Stile
     ```
 
   <a name="classes--no-duplicate-members"></a>
-  - [9.6](#classes--no-duplicate-members) Avoid duplicate class members. eslint: [`no-dupe-class-members`](https://eslint.org/docs/rules/no-dupe-class-members)
+  - [9.6](#classes--no-duplicate-members) Evitare duplicati di membri di una classe. eslint: [`no-dupe-class-members`](https://eslint.org/docs/rules/no-dupe-class-members)
 
-    > Perche? Duplicate class member declarations will silently prefer the last one - having duplicates is almost certainly a bug.
+    > Perche? Dichiarazioni di membri di classe duplicati fanno preferire in modo silente l'ultimo - avere duplicati è quasi certamente un bug.
 
     ```javascript
     // male
@@ -1261,7 +1261,7 @@ Altre Guide di Stile
     ```
 
   <a name="classes--methods-use-this"></a>
-  - [9.7](#classes--methods-use-this) Class methods should Usare `this` or be made into a static method unless an external library or framework requires using specific non-static methods. Being an instance method should indicate that it behaves differently based on properties of the receiver. eslint: [`class-methods-use-this`](https://eslint.org/docs/rules/class-methods-use-this)
+  - [9.7](#classes--methods-use-this) I metodi di classe dovrebbero usare `this` oppure essere resi statici a meno che una libreria esterna o un framework richieda l'utilizzo specifici metodi non statici. Essere un metodo di istanza dovrebbe indicare che esso si comporta diversamente in base alle proprietà del ricevente. eslint: [`class-methods-use-this`](https://eslint.org/docs/rules/class-methods-use-this)
 
     ```javascript
     // male
@@ -1271,21 +1271,21 @@ Altre Guide di Stile
       }
     }
 
-    // bene - this is used
+    // bene - questo è usato
     class Foo {
       bar() {
         console.log(this.bar);
       }
     }
 
-    // bene - constructor is exempt
+    // bene - costruttore è esente
     class Foo {
       constructor() {
         // ...
       }
     }
 
-    // bene - static methods aren't expected to Usare this
+    // bene - I metodi statici non dovrebbero usare this
     class Foo {
       static bar() {
         console.log('bar');
@@ -1295,12 +1295,12 @@ Altre Guide di Stile
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Modules
+## Moduli
 
   <a name="modules--use-them"></a><a name="10.1"></a>
-  - [10.1](#modules--use-them) Always Usare modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
+  - [10.1](#modules--use-them) Usare sempre (`import`/`export`) per importare/esportare i moduli rispetto a un sistema di moduli non standard. Si può sempre eseguire un transpile verso il proprio sistema di moduli preferito.
 
-    > Perche? Modules are the future, let’s start using the future now.
+    > Perche? I moduli sono il futuro, si inizi a usare il futuro ora.
 
     ```javascript
     // male
@@ -1317,9 +1317,9 @@ Altre Guide di Stile
     ```
 
   <a name="modules--no-wildcard"></a><a name="10.2"></a>
-  - [10.2](#modules--no-wildcard) Do not Usare wildcard imports.
+  - [10.2](#modules--no-wildcard) Do not usare wildcard con gli import.
 
-    > Perche? This makes sure you have a single default export.
+    > Perche? Ciò assicura di avere un singolo export predefinito.
 
     ```javascript
     // male
@@ -1330,9 +1330,9 @@ Altre Guide di Stile
     ```
 
   <a name="modules--no-export-from-import"></a><a name="10.3"></a>
-  - [10.3](#modules--no-export-from-import) And do not export directly from an import.
+  - [10.3](#modules--no-export-from-import) Non esportare direttamente da un import.
 
-    > Perche? Although the one-liner is concise, having one clear way to import and one clear way to export makes things consistent.
+    > Perche? Anche se l'istruzione in una riga è concisa, avere un chiaro modo di importare ed esportare rende le cosi consistenti.
 
     ```javascript
     // male
@@ -1346,9 +1346,10 @@ Altre Guide di Stile
     ```
 
   <a name="modules--no-duplicate-imports"></a>
-  - [10.4](#modules--no-duplicate-imports) Only import from a path in one place.
+  - [10.4](#modules--no-duplicate-imports) Importare da un percorso in un solo posto.
  eslint: [`no-duplicate-imports`](https://eslint.org/docs/rules/no-duplicate-imports)
-    > Perche? Having multiple lines that import from the same path can make code harder to maintain.
+    
+    > Perche? Avere molteplici righe che importano dallo stesso percorso può rendere il codice più difficile da mantenere.
 
     ```javascript
     // male
