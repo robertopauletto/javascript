@@ -301,7 +301,7 @@ Altre Guide di Stile
     // bene
     console.log(Object.prototype.hasOwnProperty.call(object, key));
 
-    // best
+    // ancora meglio
     const has = Object.prototype.hasOwnProperty; // cache la ricerca una volta sola, a livello di modulo.
     console.log(has.call(object, key));
     /* or */
@@ -313,7 +313,7 @@ Altre Guide di Stile
   - [3.8](#objects--rest-spread) Preferire la sintassi spread dell'oggetto al posto di [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) per copie per indirizzo (shallow) di oggetti. Usare la sintassi rest per i parametri per ottenere un nuovo oggetto con certe proprietà omesse.. eslint: [`prefer-object-spread`](https://eslint.org/docs/rules/prefer-object-spread)
 
     ```javascript
-    // very bad
+    // molto male
     const original = { a: 1, b: 2 };
     const copy = Object.assign(original, { c: 3 }); // questo cambia `original` ಠ_ಠ
     delete copy.a; // so does this
@@ -384,7 +384,7 @@ Altre Guide di Stile
     // bene
     const nodes = Array.from(foo);
 
-    // best
+    // ancora meglio
     const nodes = [...foo];
     ```
 
@@ -519,7 +519,7 @@ Altre Guide di Stile
       return `${firstName} ${lastName}`;
     }
 
-    // best
+    // ancora meglio
     function getFullName({ firstName, lastName }) {
       return `${firstName} ${lastName}`;
     }
@@ -1311,7 +1311,7 @@ Altre Guide di Stile
     import AirbnbStyleGuide from './AirbnbStyleGuide';
     export default AirbnbStyleGuide.es6;
 
-    // best
+    // ancora meglio
     import { es6 } from './AirbnbStyleGuide';
     export default es6;
     ```
@@ -1354,7 +1354,7 @@ Altre Guide di Stile
     ```javascript
     // male
     import foo from 'foo';
-    // … some other imports … //
+    // … altri import … //
     import { named1, named2 } from 'foo';
 
     // bene
@@ -1368,9 +1368,9 @@ Altre Guide di Stile
     ```
 
   <a name="modules--no-mutable-exports"></a>
-  - [10.5](#modules--no-mutable-exports) Do not export mutable bindings.
+  - [10.5](#modules--no-mutable-exports) Non esportare binding che possono cambiare.
  eslint: [`import/no-mutable-exports`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md)
-    > Perche? Mutation should be avoided in general, but in particular when exporting mutable bindings. While this technique may be needed for some special cases, in general, only constant references should be exported.
+    > Perche? Le mutazione andrebbero evitate in generale, ma in particolare quando si esportano binging mutevoli. Sebbene questa tecnicha sia necessaria per taluni casi speciali, in generale solo riferimenti costanti dovrebbero essere esportati.
 
     ```javascript
     // male
@@ -1383,9 +1383,10 @@ Altre Guide di Stile
     ```
 
   <a name="modules--prefer-default-export"></a>
-  - [10.6](#modules--prefer-default-export) In modules with a single export, prefer default export over named export.
+  - [10.6](#modules--prefer-default-export) In moduli con un solo export, preferire default export su export denominati.
  eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md)
-    > Perche? To encourage more files that only ever export one thing, which is better for readability and maintainability.
+
+    > Perche? Per aumentare il numero di file che esportano sempre una sola cosa, il che è meglio per leggibilità e manutenibilità.
 
     ```javascript
     // male
@@ -1396,9 +1397,10 @@ Altre Guide di Stile
     ```
 
   <a name="modules--imports-first"></a>
-  - [10.7](#modules--imports-first) Put all `import`s above non-import statements.
+  - [10.7](#modules--imports-first) Inserire tutte le istruzioni `import`s sopra quelle non-import.
  eslint: [`import/first`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/first.md)
-    > Perche? Since `import`s are hoisted, keeping them all at the top prevents surprising behavior.
+
+    > Perche? Visto che gli  `import`s sono valutati all'inizio del file, mantenerli tutti alla sommità previene comportamenti che possono sorprendere.
 
     ```javascript
     // male
@@ -1415,10 +1417,10 @@ Altre Guide di Stile
     ```
 
   <a name="modules--multiline-imports-over-newlines"></a>
-  - [10.8](#modules--multiline-imports-over-newlines) Multiline imports should be indented just like multiline array and object literals.
+  - [10.8](#modules--multiline-imports-over-newlines) Import su più righe dovrebbero essere indentati proprio come gli array e gli oggetti letterali su più righe.
  eslint: [`object-curly-newline`](https://eslint.org/docs/rules/object-curly-newline)
 
-    > Perche? The curly braces follow the same indentation rules as every other curly brace block in the style guide, as do the trailing commas.
+    > Perche? Le parentesi graffe seguono le stesse regole di indentazione di qualsiasi altro blocco all'interno di parentesi graffe nella guida di stile, così come le virgole finali.
 
     ```javascript
     // male
@@ -1435,9 +1437,10 @@ Altre Guide di Stile
     ```
 
   <a name="modules--no-webpack-loader-syntax"></a>
-  - [10.9](#modules--no-webpack-loader-syntax) Disallow Webpack loader syntax in module import statements.
+  - [10.9](#modules--no-webpack-loader-syntax) Non consentire la sintassi del Webpack loader per le istruzioni di importazione dei moduli.
  eslint: [`import/no-webpack-loader-syntax`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-webpack-loader-syntax.md)
-    > Perche? Since using Webpack syntax in the imports couples the code to a module bundler. Prefer using the loader syntax in `webpack.config.js`.
+
+    > Perche? Usare la sintassi Webpack negli import accoppia il codice a un module bundler. Si preferisca la sintassi del loader in `webpack.config.js`.
 
     ```javascript
     // male
@@ -1450,9 +1453,10 @@ Altre Guide di Stile
     ```
 
   <a name="modules--import-extensions"></a>
-  - [10.10](#modules--import-extensions) Do not include JavaScript filename extensions
+  - [10.10](#modules--import-extensions) Non includere le estensioni dei nomi di file JavaScript.
  eslint: [`import/extensions`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md)
-    > Perche? Including extensions inhibits refactoring, and inappropriately hardcodes implementation details of the module you're importing in every consumer.
+
+    > Perche? L'includere estensioni inibisce il  refactoring, e codificano rigidamente in modo non appropriato i dettagli di implementazione del modulo che si sta importando su ogni consumatore.
 
     ```javascript
     // male
@@ -1468,14 +1472,14 @@ Altre Guide di Stile
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Iterators and Generators
+## Iteratori e Generatori
 
   <a name="iterators--nope"></a><a name="11.1"></a>
-  - [11.1](#iterators--nope) Don’t Usare iterators. Prefer JavaScript’s higher-order functions instead of loops like `for-in` or `for-of`. eslint: [`no-iterator`](https://eslint.org/docs/rules/no-iterator) [`no-restricted-syntax`](https://eslint.org/docs/rules/no-restricted-syntax)
+  - [11.1](#iterators--nope) Non usare iterators. Si preferiscano le funzioni di più alto livello di Javascript invece di cicli tipo `for-in` o `for-of`. eslint: [`no-iterator`](https://eslint.org/docs/rules/no-iterator) [`no-restricted-syntax`](https://eslint.org/docs/rules/no-restricted-syntax)
 
-    > Perche? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects.
+    > Perche? Questo impone una nostra immutabile regole. Avere a che fare con funzioni pure che ritornano valori è pià facile ragionare rispetto agli effetti collaterali.
 
-    > Usare `map()` / `every()` / `filter()` / `find()` / `findIndex()` / `reduce()` / `some()` / ... to iterate over arrays, and `Object.keys()` / `Object.values()` / `Object.entries()` to produce arrays so you can iterate over objects.
+    > Usare `map()` / `every()` / `filter()` / `find()` / `findIndex()` / `reduce()` / `some()` / ... per iterare sugli arrays, e `Object.keys()` / `Object.values()` / `Object.entries()` per produrre array in modo da potere iterare sugli oggettiù.
 
     ```javascript
     const numbers = [1, 2, 3, 4, 5];
@@ -1494,7 +1498,7 @@ Altre Guide di Stile
     });
     sum === 15;
 
-    // best (Usare the functional force)
+    // ancora meglio (Usare la forza del funzionale)
     const sum = numbers.reduce((total, num) => total + num, 0);
     sum === 15;
 
@@ -1510,19 +1514,19 @@ Altre Guide di Stile
       increasedByOne.push(num + 1);
     });
 
-    // best (keeping it functional)
+    // ancora meglio (si mantiene funzionale)
     const increasedByOne = numbers.map((num) => num + 1);
     ```
 
   <a name="generators--nope"></a><a name="11.2"></a>
-  - [11.2](#generators--nope) Don’t Usare generators for now.
+  - [11.2](#generators--nope) Per ora non usare generatori.
 
-    > Perche? They don’t transpile well to ES5.
+    > Perche? Il transpile verso ES5 non è tanto buono.
 
   <a name="generators--spacing"></a>
-  - [11.3](#generators--spacing) If you must Usare generators, or if you disregard [our advice](#generators--nope), make sure their function signature is spaced properly. eslint: [`generator-star-spacing`](https://eslint.org/docs/rules/generator-star-spacing)
+  - [11.3](#generators--spacing) Se si devono usare i generatori, o se si vuole ignorare il [nostro consiglio](#generators--nope), assicurarsi che la firma della loro funzione sia spaziata correttamente. eslint: [`generator-star-spacing`](https://eslint.org/docs/rules/generator-star-spacing)
 
-    > Perche? `function` and `*` are part of the same conceptual keyword - `*` is not a modifier for `function`, `function*` is a unique construct, different from `function`.
+    > Perche? `function` e `*` sono parti della stessa parola chiave concettuale - `*` non è un modificatore per  `function`, `function*` è un costrutto unico, diverso da `function`.
 
     ```javascript
     // male
@@ -1555,14 +1559,14 @@ Altre Guide di Stile
       // ...
     }
 
-    // very bad
+    // molto male
     function
     *
     foo() {
       // ...
     }
 
-    // very bad
+    // molto male
     const wat = function
     *
     () {
@@ -1582,10 +1586,10 @@ Altre Guide di Stile
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Properties
+## Proprietà
 
   <a name="properties--dot"></a><a name="12.1"></a>
-  - [12.1](#properties--dot) Usare dot notation when accessing properties. eslint: [`dot-notation`](https://eslint.org/docs/rules/dot-notation)
+  - [12.1](#properties--dot) Usare la notazione a punti per accedere a proprietà. eslint: [`dot-notation`](https://eslint.org/docs/rules/dot-notation)
 
     ```javascript
     const luke = {
@@ -1601,7 +1605,7 @@ Altre Guide di Stile
     ```
 
   <a name="properties--bracket"></a><a name="12.2"></a>
-  - [12.2](#properties--bracket) Usare bracket notation `[]` when accessing properties with a variable.
+  - [12.2](#properties--bracket) Usare la notazione a parentesi quadre `[]` quando si accede alle proprietà con una variabile.
 
     ```javascript
     const luke = {
@@ -1617,7 +1621,7 @@ Altre Guide di Stile
     ```
 
   <a name="es2016-properties--exponentiation-operator"></a>
-  - [12.3](#es2016-properties--exponentiation-operator) Usare exponentiation operator `**` when calculating exponentiations. eslint: [`no-restricted-properties`](https://eslint.org/docs/rules/no-restricted-properties).
+  - [12.3](#es2016-properties--exponentiation-operator) Usare l'operatore di esponente `**`  quando si fanno calcoli con le potenze. eslint: [`no-restricted-properties`](https://eslint.org/docs/rules/no-restricted-properties).
 
     ```javascript
     // male
@@ -1629,10 +1633,10 @@ Altre Guide di Stile
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Variables
+## Variabili
 
   <a name="variables--const"></a><a name="13.1"></a>
-  - [13.1](#variables--const) Always Usare `const` or `let` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that. eslint: [`no-undef`](https://eslint.org/docs/rules/no-undef) [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
+  - [13.1](#variables--const) Usare sempre `const` o `let` Per dichiarare variabili. Non farlo comporterà variabili globali. Si vuole evitare di contaminare lo spazio dei nomi globale. Captain Planet ci aveva avvertito. eslint: [`no-undef`](https://eslint.org/docs/rules/no-undef) [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
 
     ```javascript
     // male
@@ -1643,9 +1647,9 @@ Altre Guide di Stile
     ```
 
   <a name="variables--one-const"></a><a name="13.2"></a>
-  - [13.2](#variables--one-const) Usare one `const` or `let` declaration per variable or assignment. eslint: [`one-var`](https://eslint.org/docs/rules/one-var)
+  - [13.2](#variables--one-const) Usare una dichiarazione `const` o `let` per variabile o assegnazione. eslint: [`one-var`](https://eslint.org/docs/rules/one-var)
 
-    > Perche? It’s easier to add new variable declarations this way, and you never have to worry about swapping out a `;` for a `,` or introducing punctuation-only diffs. You can also step through each declaration with the debugger, instead of jumping through all of them at once.
+    > Perche? È più facile aggiungere nuove dichiarazioni di variabili in questo modo e non ci si deve mai preoccupare di sostituire a `;` con a `,` o intrudurre differenze di sola punteggiatura. Si può anche passare attraverso ogni dichiarazione con il debugger, invece di saltarle tutte contemporaneamente.
 
     ```javascript
     // male
@@ -1654,7 +1658,7 @@ Altre Guide di Stile
         dragonball = 'z';
 
     // male
-    // (compare to above, and try to spot the mistake)
+    // (fare il confronto con quanto sopra e provare a indentificare il punto di errore)
     const items = getItems(),
         goSportsTeam = true;
         dragonball = 'z';
@@ -1666,9 +1670,9 @@ Altre Guide di Stile
     ```
 
   <a name="variables--const-let-group"></a><a name="13.3"></a>
-  - [13.3](#variables--const-let-group) Group all your `const`s and then group all your `let`s.
+  - [13.3](#variables--const-let-group) Raggruppare tutte le dichiarazioni `const` quindi raggruppare quelle `let`.
 
-    > Perche? This is helpful when later on you might need to assign a variable depending on one of the previously assigned variables.
+    > Perche? E' di aiuto quando successivamente si potrebbe aver bisogno di assegnare una variabile che dipende da una precedentemente assegnata.
 
     ```javascript
     // male
@@ -1692,12 +1696,12 @@ Altre Guide di Stile
     ```
 
   <a name="variables--define-where-used"></a><a name="13.4"></a>
-  - [13.4](#variables--define-where-used) Assign variables where you need them, but place them in a reasonable place.
+  - [13.4](#variables--define-where-used) Assegnare le variabili quando servono, ma posizionarle in un punto ragionevole.
 
-    > Perche? `let` and `const` are block scoped and not function scoped.
+    > Perche? `let` e `const` hanno visibilitò a livello di blocco, non di funzione.
 
     ```javascript
-    // male - unnecessary function call
+    // male - chiamata a funzione non necessaria
     function checkName(hasName) {
       const name = getName();
 
@@ -1731,21 +1735,21 @@ Altre Guide di Stile
     ```
 
   <a name="variables--no-chain-assignment"></a><a name="13.5"></a>
-  - [13.5](#variables--no-chain-assignment) Don’t chain variable assignments. eslint: [`no-multi-assign`](https://eslint.org/docs/rules/no-multi-assign)
+  - [13.5](#variables--no-chain-assignment) Non concatenare assegnazioni di variabili. eslint: [`no-multi-assign`](https://eslint.org/docs/rules/no-multi-assign)
 
-    > Perche? Chaining variable assignments creates implicit global variables.
+    > Perche? Il concatenare assegnazioni di variabili crea variabili globali implicite.
 
     ```javascript
     // male
     (function example() {
       // JavaScript interprets this as
       // let a = ( b = ( c = 1 ) );
-      // The let keyword only applies to variable a; variables b and c become
-      // global variables.
+      // La parola chiave let si applica solo alla variabile a, 
+      // le variabili b e c diventano globali.
       let a = b = c = 1;
     }());
 
-    console.log(a); // throws ReferenceError
+    console.log(a); // solleva ReferenceError
     console.log(b); // 1
     console.log(c); // 1
 
@@ -1756,17 +1760,17 @@ Altre Guide di Stile
       let c = a;
     }());
 
-    console.log(a); // throws ReferenceError
-    console.log(b); // throws ReferenceError
-    console.log(c); // throws ReferenceError
+    console.log(a); // solleva ReferenceError
+    console.log(b); // solleva ReferenceError
+    console.log(c); // solleva ReferenceError
 
-    // the same applies for `const`
+    // Lo stesso vale per `const`
     ```
 
   <a name="variables--unary-increment-decrement"></a><a name="13.6"></a>
-  - [13.6](#variables--unary-increment-decrement) Avoid using unary increments and decrements (`++`, `--`). eslint [`no-plusplus`](https://eslint.org/docs/rules/no-plusplus)
+  - [13.6](#variables--unary-increment-decrement) Evitare l'uso di incrementi e decrementi unari (`++`, `--`). eslint [`no-plusplus`](https://eslint.org/docs/rules/no-plusplus)
 
-    > Perche? Per the eslint documentation, unary increment and decrement statements are subject to automatic semicolon insertion and can caUsare silent errors with incrementing or decrementing values within an application. It is also more expressive to mutate your values with statements like `num += 1` instead of `num++` or `num ++`. Disallowing unary increment and decrement statements also prevents you from pre-incrementing/pre-decrementing values unintentionally which can also caUsare unexpected behavior in your programs.
+    > Perche? Stando alla documentazione eslint, le istruzioni di incremento e decremento unarie sono soggette ad inserimento automatico di un punto e virgola e possono causare errori non presidiati mentre si incrementano e decrementano valori all'interno di un'applicazione. È anche più espressivo mutare i propri valori con dichiarazioni come `num += 1` invece di `num++` o `num ++`. Non consentire le dichiarazioni di incremento e decremento unarie impedisce inoltre il pre-incremento/pre-decremento involontario dei valori, il che può anche causare comportamenti imprevisti nei programmi.
 
     ```javascript
     // male
@@ -1798,9 +1802,9 @@ Altre Guide di Stile
     ```
 
 <a name="variables--linebreak"></a>
-  - [13.7](#variables--linebreak) Avoid linebreaks before or after `=` in an assignment. If your assignment violates [`max-len`](https://eslint.org/docs/rules/max-len), surround the value in parens. eslint [`operator-linebreak`](https://eslint.org/docs/rules/operator-linebreak).
+  - [13.7](#variables--linebreak) Evitare interruzioni di riga prima o dopo `=` in una assegnazione. Se l'assegnazione viola [`max-len`](https://eslint.org/docs/rules/max-len), racchiudere il valore tra parentesi. eslint [`operator-linebreak`](https://eslint.org/docs/rules/operator-linebreak).
 
-    > Perche? Linebreaks surrounding `=` can obfuscate the value of an assignment.
+    > Perche? Racchiudere `=` tra interruzioni di riga potrebbe offuscare il valore di una assegnazione.
 
     ```javascript
     // male
@@ -1821,24 +1825,24 @@ Altre Guide di Stile
     ```
 
 <a name="variables--no-unused-vars"></a>
-  - [13.8](#variables--no-unused-vars) Disallow unused variables. eslint: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars)
+  - [13.8](#variables--no-unused-vars) Non consentire variabili inutilizzate. eslint: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars)
 
-    > Perche? Variables that are declared and not used anywhere in the code are most likely an error due to incomplete refactoring. Such variables take up space in the code and can lead to confusion by readers.
+    > Perche? Le variabili dichiarate e non utilizzate da nessuna parte nel codice sono molto probabilmente un errore a causa di refactoring incompleto. Tali variabili occupano spazio nel codice e possono portare confusione da parte dei lettori.
 
     ```javascript
     // male
 
     var some_unused_var = 42;
 
-    // Write-only variables are not considered as used.
+    // Variabili a sola scrittura non sono considerate come usate.
     var y = 10;
     y = 5;
 
-    // A read for a modification of itself is not considered as used.
+    // Una lettura per modificare se stesso non è considerato un utilizzo.
     var z = 0;
     z = z + 1;
 
-    // Unused function arguments.
+    // Argomenti di funzione non usati.
     function getX(x, y) {
         return x;
     }
@@ -1854,10 +1858,10 @@ Altre Guide di Stile
 
     alert(getXPlusY(x, y));
 
-    // 'type' is ignored even if unused becaUsare it has a rest property sibling.
-    // This is a form of extracting an object that omits the specified keys.
+    // 'type' è ignorato anche se non usato in quanto ha una proprietà rest sorella.
+    // Questa è una forma di estrazione di un oggetto che omette le chiavi specificate
     var { type, ...coords } = data;
-    // 'coords' is now the 'data' object without its 'type' property.
+    // 'coords' ora è l'oggetto  'data' senza la sua proprietà 'type'.
     ```
 
 **[⬆ torna all'inizio](#sommario)**
@@ -1865,43 +1869,43 @@ Altre Guide di Stile
 ## Hoisting
 
   <a name="hoisting--about"></a><a name="14.1"></a>
-  - [14.1](#hoisting--about) `var` declarations get hoisted to the top of their closest enclosing function scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#temporal_dead_zone_tdz). It’s important to know why [typeof is no longer safe](https://web.archive.org/web/20200121061528/http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
+  - [14.1](#hoisting--about) Le dichiarazioni `var` sono spostate dall'interprete all'inizio del loro blocco di visibilità di funzione più vicino, la loro assegnazione no. Le dichiarazioni di `const` e `let` sono benedette da un nuovo concetto chiamato Zone Morte Temporanee [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#temporal_dead_zone_tdz). E' importante saper perchè [typeof non è più sicuro](https://web.archive.org/web/20200121061528/http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
 
     ```javascript
-    // we know this wouldn’t work (assuming there
-    // is no notDefined global variable)
+    // Sappiamo che questo non avrebbe funzionato (assumendo che
+    // non ci sia una variabile globale notDefined 
     function example() {
-      console.log(notDefined); // => throws a ReferenceError
+      console.log(notDefined); // => solleva un ReferenceError
     }
 
-    // creating a variable declaration after you
-    // reference the variable will work due to
-    // variable hoisting. Note: the assignment
-    // value of `true` is not hoisted.
+    // creare una dichiarazione di variabile dopo che
+    // la variabile è referenziata funzionerà grazie 
+    // all'hoisting della variable. Nota: Il valore di assegnazione
+    // di `true` non è oggetto di hoisting.
     function example() {
       console.log(declaredButNotAssigned); // => undefined
       var declaredButNotAssigned = true;
     }
 
-    // the interpreter is hoisting the variable
-    // declaration to the top of the scope,
-    // which means our example could be rewritten as:
+    // L'interpre sposta la dichiarazione della
+    // variabile all'inizio del blocco di visibilità
+    // il che significa che questo esempio potrebbe essere riscritto come:
     function example() {
       let declaredButNotAssigned;
       console.log(declaredButNotAssigned); // => undefined
       declaredButNotAssigned = true;
     }
 
-    // using const and let
+    // usando const e let
     function example() {
-      console.log(declaredButNotAssigned); // => throws a ReferenceError
-      console.log(typeof declaredButNotAssigned); // => throws a ReferenceError
+      console.log(declaredButNotAssigned); // => solelva un ReferenceError
+      console.log(typeof declaredButNotAssigned); // => solelva un ReferenceError
       const declaredButNotAssigned = true;
     }
     ```
 
   <a name="hoisting--anon-expressions"></a><a name="14.2"></a>
-  - [14.2](#hoisting--anon-expressions) Anonymous function expressions hoist their variable name, but not the function assignment.
+  - [14.2](#hoisting--anon-expressions) Il nome della variabile assegnata a espressioni di funzioni anonime è oggetto di hoisting, ma non l'assegnazione della funzioneAnonymous function expressions hoist their variable name, but not the function assignment.
 
     ```javascript
     function example() {
@@ -1916,7 +1920,7 @@ Altre Guide di Stile
     ```
 
   <a name="hoisting--named-expresions"></a><a name="hoisting--named-expressions"></a><a name="14.3"></a>
-  - [14.3](#hoisting--named-expressions) Named function expressions hoist the variable name, not the function name or the function body.
+  - [14.3](#hoisting--named-expressions) Il nome della variabile per espressioni di funzione denominata è oggetto di hoisting, ma non il nome della funzione o il corpo della funzione.
 
     ```javascript
     function example() {
@@ -1931,8 +1935,8 @@ Altre Guide di Stile
       };
     }
 
-    // the same is true when the function name
-    // is the same as the variable name.
+    // vale anche quando il nome di funzione
+    // è lo stesso del nome della variabile
     function example() {
       console.log(named); // => undefined
 
@@ -1945,7 +1949,7 @@ Altre Guide di Stile
     ```
 
   <a name="hoisting--declarations"></a><a name="14.4"></a>
-  - [14.4](#hoisting--declarations) Function declarations hoist their name and the function body.
+  - [14.4](#hoisting--declarations) Il nome e corpo di dichiarazione di funzioni è oggetto di hoisting.
 
     ```javascript
     function example() {
@@ -1957,7 +1961,7 @@ Altre Guide di Stile
     }
     ```
 
-  - For more information refer to [JavaScript Scoping & Hoisting](https://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/) by [Ben Cherry](https://www.adequatelygood.com/).
+  - Per ulteriori informazioni, consultare [JavaScript Scoping & Hoisting](https://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/) di [Ben Cherry](https://www.adequatelygood.com/).
 
 **[⬆ torna all'inizio](#sommario)**
 
@@ -2086,7 +2090,7 @@ Altre Guide di Stile
       ? 'bar'
       : maybeNull;
 
-    // best
+    // ancora meglio
     const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
     ```
 
@@ -3234,7 +3238,7 @@ Altre Guide di Stile
     // bene
     const hasAge = Boolean(age);
 
-    // best
+    // ancora meglio
     const hasAge = !!age;
     ```
 
@@ -3430,10 +3434,10 @@ Altre Guide di Stile
       // ...
     ];
 
-    // best
+    // ancora meglio
     import TextMessageContainer from './containers/TextMessageContainer';
 
-    // best
+    // ancora meglio
     const requests = [
       // ...
     ];
