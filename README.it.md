@@ -1965,30 +1965,30 @@ Altre Guide di Stile
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Comparison Operators & Equality
+## Operatori di Confronto e Uguaglianza
 
   <a name="comparison--eqeqeq"></a><a name="15.1"></a>
-  - [15.1](#comparison--eqeqeq) Usare `===` and `!==` over `==` and `!=`. eslint: [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq)
+  - [15.1](#comparison--eqeqeq) Preferire `===` e `!==` a `==` e `!=`. eslint: [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq)
 
   <a name="comparison--if"></a><a name="15.2"></a>
-  - [15.2](#comparison--if) Conditional statements such as the `if` statement evaluate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
+  - [15.2](#comparison--if) Istruzioni condizionali tipo `if` valutano la propria espressione usando la coercizione con il metodo astratto `ToBoolean` e seguono sempre queste semplici regoleù:
 
-    - **Objects** evaluate to **true**
-    - **Undefined** evaluates to **false**
-    - **Null** evaluates to **false**
-    - **Booleans** evaluate to **the value of the boolean**
-    - **Numbers** evaluate to **false** if **+0, -0, or NaN**, otherwise **true**
-    - **Strings** evaluate to **false** if an empty string `''`, otherwise **true**
+    - **Objects** è valutato come **true**
+    - **Undefined** è valutato come **false**
+    - **Null** è valutato come **false**
+    - **Booleans** è valutato come **il valore del boolean**
+    - **Numbers** è valutato come **false** se **+0, -0, o NaN**, altrimenti **true**
+    - **Strings** è valutato come **false** se stringa vuota `''`, altrimenti **true**
 
     ```javascript
     if ([0] && []) {
       // true
-      // an array (even an empty one) is an object, objects will evaluate to true
+      // un array (anche se vuoto) è un oggetto, gli oggetti vengono valutati come true
     }
     ```
 
   <a name="comparison--shortcuts"></a><a name="15.3"></a>
-  - [15.3](#comparison--shortcuts) Usare shortcuts for booleans, but explicit comparisons for strings and numbers.
+  - [15.3](#comparison--shortcuts) Usare le scorciatoie per booleani, ma confronti espliciti per stringhe e numeri.
 
     ```javascript
     // male
@@ -2023,12 +2023,12 @@ Altre Guide di Stile
     ```
 
   <a name="comparison--moreinfo"></a><a name="15.4"></a>
-  - [15.4](#comparison--moreinfo) For more information see [Truth Equality and JavaScript](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
+  - [15.4](#comparison--moreinfo) Per ulteriori informazioni, vedere [Truth Equality and JavaScript](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) di Angus Croll.
 
   <a name="comparison--switch-blocks"></a><a name="15.5"></a>
-  - [15.5](#comparison--switch-blocks) Usare braces to create blocks in `case` and `default` clauses that contain lexical declarations (e.g. `let`, `const`, `function`, and `class`). eslint: [`no-case-declarations`](https://eslint.org/docs/rules/no-case-declarations)
+  - [15.5](#comparison--switch-blocks) Usare parentesi graffe per creare blocchi in clausole `case` e `default` che contengono dichiarazioni lessicali (es. `let`, `const`, `function`, e `class`). eslint: [`no-case-declarations`](https://eslint.org/docs/rules/no-case-declarations)
 
-    > Perche? Lexical declarations are visible in the entire `switch` block but only get initialized when assigned, which only happens when its `case` is reached. This causes problems when multiple `case` clauses attempt to define the same thing.
+    > Perchè? Le dichiarazioni lessicali sono visibili nell'intero blocco `switch` ma vengono inizializzate solo quando assegnate, cosa che si verifica solo quando viene raggiunto il suo `case`. Ciò provoca problemi quando multipleclausole `case` tentano di definire la stessa cosa.
 
     ```javascript
     // male
@@ -2074,7 +2074,7 @@ Altre Guide di Stile
     ```
 
   <a name="comparison--nested-ternaries"></a><a name="15.6"></a>
-  - [15.6](#comparison--nested-ternaries) Ternaries should not be nested and generally be single line expressions. eslint: [`no-nested-ternary`](https://eslint.org/docs/rules/no-nested-ternary)
+  - [15.6](#comparison--nested-ternaries) I ternari non dovrebbero essere annidati e generalmente dovrebbero essere espressioni su singola riga. eslint: [`no-nested-ternary`](https://eslint.org/docs/rules/no-nested-ternary)
 
     ```javascript
     // male
@@ -2082,20 +2082,20 @@ Altre Guide di Stile
       ? "bar"
       : value1 > value2 ? "baz" : null;
 
-    // split into 2 separated ternary expressions
+    // dividere in 2 espressioni ternarie separate
     const maybeNull = value1 > value2 ? 'baz' : null;
 
-    // better
+    // meglio
     const foo = maybe1 > maybe2
       ? 'bar'
       : maybeNull;
 
-    // ancora meglio
+    // ottimo
     const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
     ```
 
   <a name="comparison--unneeded-ternary"></a><a name="15.7"></a>
-  - [15.7](#comparison--unneeded-ternary) Avoid unneeded ternary statements. eslint: [`no-unneeded-ternary`](https://eslint.org/docs/rules/no-unneeded-ternary)
+  - [15.7](#comparison--unneeded-ternary) Evitare istruzioni ternarie non necessarie. eslint: [`no-unneeded-ternary`](https://eslint.org/docs/rules/no-unneeded-ternary)
 
     ```javascript
     // male
@@ -2110,10 +2110,10 @@ Altre Guide di Stile
     ```
 
   <a name="comparison--no-mixed-operators"></a>
-  - [15.8](#comparison--no-mixed-operators) When mixing operators, enclose them in parentheses. The only exception is the standard arithmetic operators: `+`, `-`, and `**` since their precedence is broadly understood. We recommend enclosing `/` and `*` in parentheses becaUsare their precedence can be ambiguous when they are mixed.
+  - [15.8](#comparison--no-mixed-operators) Quando si mescolano gli operatori, racchiuderli tra parentesi. L'unica eccezione sono gli operatori aritmetici standard: `+`, `-`, e `**` Poiché la loro precedenza è ampiamente compresa. Si consiglia di racchiudere `/` e `*` tra parentesi Perché la loro precedenza può essere ambigua quando sono mescolati.
   eslint: [`no-mixed-operators`](https://eslint.org/docs/rules/no-mixed-operators)
 
-    > Perche? This improves readability and clarifies the developer’s intention.
+    > Perchè? Ciò migliora la leggibilità e chiarisce l'intenzione dello sviluppatore.
 
     ```javascript
     // male
@@ -2123,7 +2123,7 @@ Altre Guide di Stile
     const bar = a ** b - 5 % d;
 
     // male
-    // one may be confused into thinking (a || b) && c
+    // ci si potrebbe confondere pensando (a || b) && c
     if (a || b && c) {
       return d;
     }
@@ -2146,12 +2146,12 @@ Altre Guide di Stile
     const bar = a + (b / c) * d;
     ```
 
-**[⬆ torna all'inizio](#sommario)**
+**[⬆ back to top](#table-of-contents)**
 
 ## Blocks
 
   <a name="blocks--braces"></a><a name="16.1"></a>
-  - [16.1](#blocks--braces) Usare braces with all multiline blocks. eslint: [`nonblock-statement-body-position`](https://eslint.org/docs/rules/nonblock-statement-body-position)
+  - [16.1](#blocks--braces) Usare parentesi graffe per tutti i blocchi su più righe. eslint: [`nonblock-statement-body-position`](https://eslint.org/docs/rules/nonblock-statement-body-position)
 
     ```javascript
     // male
@@ -2176,7 +2176,7 @@ Altre Guide di Stile
     ```
 
   <a name="blocks--cuddled-elses"></a><a name="16.2"></a>
-  - [16.2](#blocks--cuddled-elses) If you’re using multiline blocks with `if` and `else`, put `else` on the same line as your `if` block’s closing brace. eslint: [`brace-style`](https://eslint.org/docs/rules/brace-style)
+  - [16.2](#blocks--cuddled-elses) Se si usano blocchi su più righe con  `if` ed `else`, inserire `else` nella stessa riga della parentesi di chiusura del blocco `if`. eslint: [`brace-style`](https://eslint.org/docs/rules/brace-style)
 
     ```javascript
     // male
@@ -2198,7 +2198,7 @@ Altre Guide di Stile
     ```
 
   <a name="blocks--no-else-return"></a><a name="16.3"></a>
-  - [16.3](#blocks--no-else-return) If an `if` block always executes a `return` statement, the subsequent `else` block is unnecessary. A `return` in an `else if` block following an `if` block that contains a `return` can be separated into multiple `if` blocks. eslint: [`no-else-return`](https://eslint.org/docs/rules/no-else-return)
+  - [16.3](#blocks--no-else-return) Se un blocco  `if` esegue sempre una istruzione `return`, il seguente blocco `else` non è necessario. Un `return` in un blocco `else if` che segue un blcco `if` che contiene un  `return` può essere separato in più blocchi `if`. eslint: [`no-else-return`](https://eslint.org/docs/rules/no-else-return)
 
     ```javascript
     // male
@@ -2262,14 +2262,14 @@ Altre Guide di Stile
     }
     ```
 
-**[⬆ torna all'inizio](#sommario)**
+**[⬆ back to top](#table-of-contents)**
 
 ## Istruzioni di Controllo
 
   <a name="control-statements"></a>
-  - [17.1](#control-statements) In case your control statement (`if`, `while` etc.) gets too long or exceeds the maximum line length, each (grouped) condition could be put into a new line. The logical operator should begin the line.
+  - [17.1](#control-statements) Nel caso che l'istruzione di controllo  (`if`, `while` ecc.) sia troppo lunga e supere la lunghezza massima di riga, ciascuna condizione (raggruppata) potrebbe essere inserita in una nuova riga. L'operatore logico dovrebbe iniziare la riga.
 
-    > Perche? Requiring operators at the beginning of the line keeps the operators aligned and follows a pattern similar to method chaining. This also improves readability by making it easier to visually follow complex logic.
+    > Perchè? Richiedere gli operatori all'inizio della riga mantiene gli operatori allineati e segue uno schema simile al concatenamento dei metodi. Ciò migliora anche la leggibilità rendendo più facile seguire visivamente una logica complessa.
 
     ```javascript
     // male
@@ -2321,7 +2321,7 @@ Altre Guide di Stile
     ```
 
   <a name="control-statement--value-selection"></a><a name="control-statements--value-selection"></a>
-  - [17.2](#control-statements--value-selection) Don't Usare selection operators in place of control statements.
+  - [17.2](#control-statements--value-selection) Non usare operatori di selezione al posto di istruzioni di controllo.
 
     ```javascript
     // male
@@ -2333,17 +2333,17 @@ Altre Guide di Stile
     }
     ```
 
-**[⬆ torna all'inizio](#sommario)**
+**[⬆ back to top](#table-of-contents)**
 
 ## Comments
 
   <a name="comments--multiline"></a><a name="17.1"></a>
-  - [18.1](#comments--multiline) Usare `/** ... */` for multiline comments.
+  - [18.1](#comments--multiline) Usare `/** ... */` per commenti su più righe.
 
     ```javascript
     // male
-    // make() returns a new element
-    // based on the passed in tag name
+    // make() restituisce un nuovo elemento
+    // basato sul nome del tag ricevuto
     //
     // @param {String} tag
     // @return {Element} element
@@ -2356,8 +2356,8 @@ Altre Guide di Stile
 
     // bene
     /**
-     * make() returns a new element
-     * based on the passed-in tag name
+     * make() restituisce un nuovo elemento
+     * basato sul nome del tag ricevuto
      */
     function make(tag) {
 
@@ -2368,20 +2368,20 @@ Altre Guide di Stile
     ```
 
   <a name="comments--singleline"></a><a name="17.2"></a>
-  - [18.2](#comments--singleline) Usare `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment unless it’s on the first line of a block.
+  - [18.2](#comments--singleline) Usare `//` per commenti su riga singola. Piazzare i commenti su riga singola su una nuova riga sopra l'oggetto del commento. Inserire una riga vuota prime del commento a mno che non sia la prima riga di un blocco.
 
     ```javascript
     // male
-    const active = true;  // is current tab
+    const active = true;  // tab corrente
 
     // bene
-    // is current tab
+    // tab corrente
     const active = true;
 
     // male
     function getType() {
       console.log('fetching type...');
-      // set the default type to 'no type'
+      // imposta il tipo predefinito a  'no type'
       const type = this.type || 'no type';
 
       return type;
@@ -2391,7 +2391,7 @@ Altre Guide di Stile
     function getType() {
       console.log('fetching type...');
 
-      // set the default type to 'no type'
+      // imposta il tipo predefinito a  'no type'
       const type = this.type || 'no type';
 
       return type;
@@ -2399,7 +2399,7 @@ Altre Guide di Stile
 
     // also good
     function getType() {
-      // set the default type to 'no type'
+      // imposta il tipo predefinito a  'no type'
       const type = this.type || 'no type';
 
       return type;
@@ -2407,21 +2407,21 @@ Altre Guide di Stile
     ```
 
   <a name="comments--spaces"></a>
-  - [18.3](#comments--spaces) Start all comments with a space to make it easier to read. eslint: [`spaced-comment`](https://eslint.org/docs/rules/spaced-comment)
+  - [18.3](#comments--spaces) Iniziare tutti i commenti con uno spazio per facilitarne la lettura.. eslint: [`spaced-comment`](https://eslint.org/docs/rules/spaced-comment)
 
     ```javascript
     // male
-    //is current tab
+    //tab corrente
     const active = true;
 
     // bene
-    // is current tab
+    // tab corrente
     const active = true;
 
     // male
     /**
-     *make() returns a new element
-     *based on the passed-in tag name
+     *make() ritorna un nuovo elemento
+     *in base al nome del tag ricevuto
      */
     function make(tag) {
 
@@ -2432,8 +2432,8 @@ Altre Guide di Stile
 
     // bene
     /**
-     * make() returns a new element
-     * based on the passed-in tag name
+     * make() ritorna un nuovo elemento
+     * in base al nome del tag ricevuto
      */
     function make(tag) {
 
@@ -2444,42 +2444,42 @@ Altre Guide di Stile
     ```
 
   <a name="comments--actionitems"></a><a name="17.3"></a>
-  - [18.4](#comments--actionitems) Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you’re pointing out a problem that needs to be revisited, or if you’re suggesting a solution to the problem that needs to be implemented. These are different than regular comments becaUsare they are actionable. The actions are `FIXME: -- need to figure this out` or `TODO: -- need to implement`.
+  - [18.4](#comments--actionitems) Prefissare i commenti con  `FIXME` o `TODO` aiuta gli altri svilupptori a comprendere velocemente che si sta evidenziando un problema che deve essere rivisto, oppure che si sta suggerendo una soluzione a un problema che deve essere implementata. Questi sono diversi dai normali commenti in quanto richiedono una attuazione. Le azioni sono `FIXME: -- è da capire` o `TODO: -- deve essere implementato`.
 
   <a name="comments--fixme"></a><a name="17.4"></a>
-  - [18.5](#comments--fixme) Usare `// FIXME:` to annotate problems.
+  - [18.5](#comments--fixme) Usare `// FIXME:` per annotare problemi.
 
     ```javascript
     class Calculator extends Abacus {
       constructor() {
         super();
 
-        // FIXME: shouldn’t Usare a global here
+        // FIXME: non si dovrebbe usare un global qui
         total = 0;
       }
     }
     ```
 
   <a name="comments--todo"></a><a name="17.5"></a>
-  - [18.6](#comments--todo) Usare `// TODO:` to annotate solutions to problems.
+  - [18.6](#comments--todo) Usare `// TODO:` per annotare soluzioni a problemi.
 
     ```javascript
     class Calculator extends Abacus {
       constructor() {
         super();
 
-        // TODO: total should be configurable by an options param
+        // TODO: total dovrebbe essere configurabile da un parametro di opzione
         this.total = 0;
       }
     }
     ```
 
-**[⬆ torna all'inizio](#sommario)**
+**[⬆ back to top](#table-of-contents)**
 
-## Whitespace
+## Spazi bianchi
 
   <a name="whitespace--spaces"></a><a name="18.1"></a>
-  - [19.1](#whitespace--spaces) Usare soft tabs (space character) set to 2 spaces. eslint: [`indent`](https://eslint.org/docs/rules/indent)
+  - [19.1](#whitespace--spaces) Usare soft tab (carattere spazio) impostato a 2 spazi. eslint: [`indent`](https://eslint.org/docs/rules/indent)
 
     ```javascript
     // male
@@ -2499,7 +2499,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--before-blocks"></a><a name="18.2"></a>
-  - [19.2](#whitespace--before-blocks) Place 1 space before the leading brace. eslint: [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
+  - [19.2](#whitespace--before-blocks) Inserire 1 spazio prima della parentesi graffa di apertura. eslint: [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
 
     ```javascript
     // male
@@ -2526,7 +2526,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--around-keywords"></a><a name="18.3"></a>
-  - [19.3](#whitespace--around-keywords) Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space between the argument list and the function name in function calls and declarations. eslint: [`keyword-spacing`](https://eslint.org/docs/rules/keyword-spacing)
+  - [19.3](#whitespace--around-keywords) Inserire 1 spazio prima delle parentesi di apertura nelle istruzioni di controllo (`if`, `while` ecc.). Non inserire spazi tra l'elenco degli argomenti e il nome della funzione in chiamate a funzione e dichiarazioni. eslint: [`keyword-spacing`](https://eslint.org/docs/rules/keyword-spacing)
 
     ```javascript
     // male
@@ -2551,7 +2551,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--infix-ops"></a><a name="18.4"></a>
-  - [19.4](#whitespace--infix-ops) Set off operators with spaces. eslint: [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops)
+  - [19.4](#whitespace--infix-ops) Isolare gli operatori con spazi. eslint: [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops)
 
     ```javascript
     // male
@@ -2562,7 +2562,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--newline-at-end"></a><a name="18.5"></a>
-  - [19.5](#whitespace--newline-at-end) End files with a single newline character. eslint: [`eol-last`](https://eslint.org/docs/rules/eol-last)
+  - [19.5](#whitespace--newline-at-end) Terminare i file con un singolo carattere di ritorno a capo. eslint: [`eol-last`](https://eslint.org/docs/rules/eol-last)
 
     ```javascript
     // male
@@ -2587,8 +2587,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--chains"></a><a name="18.6"></a>
-  - [19.6](#whitespace--chains) Usare indentation when making long method chains (more than 2 method chains). Usare a leading dot, which
-    emphasizes that the line is a method call, not a new statement. eslint: [`newline-per-chained-call`](https://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](https://eslint.org/docs/rules/no-whitespace-before-property)
+  - [19.6](#whitespace--chains) Usare indentazione quando si hanno lunghi concatenamenti di metodi (più di 2). Usare un punto iniale, che enfatizza che la riga è una chiamata a un metodo, non una nuova istruzione. eslint: [`newline-per-chained-call`](https://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](https://eslint.org/docs/rules/no-whitespace-before-property)
 
     ```javascript
     // male
@@ -2635,7 +2634,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--after-blocks"></a><a name="18.7"></a>
-  - [19.7](#whitespace--after-blocks) Leave a blank line after blocks and before the next statement.
+  - [19.7](#whitespace--after-blocks) Lasciare una riga vuota dopo ogni blocco e prima dell'istruzione successiva.
 
     ```javascript
     // male
@@ -2693,7 +2692,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--padded-blocks"></a><a name="18.8"></a>
-  - [19.8](#whitespace--padded-blocks) Do not pad your blocks with blank lines. eslint: [`padded-blocks`](https://eslint.org/docs/rules/padded-blocks)
+  - [19.8](#whitespace--padded-blocks) Non inserire righe vuote prima e dopo i blocchi. eslint: [`padded-blocks`](https://eslint.org/docs/rules/padded-blocks)
 
     ```javascript
     // male
@@ -2734,7 +2733,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--no-multiple-blanks"></a>
-  - [19.9](#whitespace--no-multiple-blanks) Do not Usare multiple blank lines to pad your code. eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
+  - [19.9](#whitespace--no-multiple-blanks) Non usare più righe vuote per distanziare il proprio codice. eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
 
     <!-- markdownlint-disable MD012 -->
     ```javascript
@@ -2788,7 +2787,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--in-parens"></a><a name="18.9"></a>
-  - [19.10](#whitespace--in-parens) Do not add spaces inside parentheses. eslint: [`space-in-parens`](https://eslint.org/docs/rules/space-in-parens)
+  - [19.10](#whitespace--in-parens) Non aggiungere spazi all'interno delle parentesi. eslint: [`space-in-parens`](https://eslint.org/docs/rules/space-in-parens)
 
     ```javascript
     // male
@@ -2813,7 +2812,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--in-brackets"></a><a name="18.10"></a>
-  - [19.11](#whitespace--in-brackets) Do not add spaces inside brackets. eslint: [`array-bracket-spacing`](https://eslint.org/docs/rules/array-bracket-spacing)
+  - [19.11](#whitespace--in-brackets) Non aggiungere spazi all'interno di parentesi quadre. eslint: [`array-bracket-spacing`](https://eslint.org/docs/rules/array-bracket-spacing)
 
     ```javascript
     // male
@@ -2826,7 +2825,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--in-braces"></a><a name="18.11"></a>
-  - [19.12](#whitespace--in-braces) Add spaces inside curly braces. eslint: [`object-curly-spacing`](https://eslint.org/docs/rules/object-curly-spacing)
+  - [19.12](#whitespace--in-braces) Aggiungere spazi all'interno delle parentesi graffe. eslint: [`object-curly-spacing`](https://eslint.org/docs/rules/object-curly-spacing)
 
     ```javascript
     // male
@@ -2837,9 +2836,9 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--max-len"></a><a name="18.12"></a>
-  - [19.13](#whitespace--max-len) Avoid having lines of code that are longer than 100 characters (including whitespace). Note: per [above](#strings--line-length), long strings are exempt from this rule, and should not be broken up. eslint: [`max-len`](https://eslint.org/docs/rules/max-len)
+  - [19.13](#whitespace--max-len) Evitare di avere righe di codice che sono più lunghe di 100 caratteri (compresi gli spazi bianchi). Nota: per [quanto esposto sopra](#strings--line-length), le stringhe lunghe sono esentate da questa regola e non dovrebbere essere spezzate. eslint: [`max-len`](https://eslint.org/docs/rules/max-len)
 
-    > Perche? This ensures readability and maintainability.
+    > Perchè? Ciò assicura la leggibilità e la manutenibilità.
 
     ```javascript
     // male
@@ -2867,7 +2866,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--block-spacing"></a>
-  - [19.14](#whitespace--block-spacing) Require consistent spacing inside an open block token and the next token on the same line. This rule also enforces consistent spacing inside a close block token and previous token on the same line. eslint: [`block-spacing`](https://eslint.org/docs/rules/block-spacing)
+  - [19.14](#whitespace--block-spacing) Richiedere consistenza di spaziatura all'interno di un token di blocco di apertura e il token successivo sulla stessa riga. Questa regola impone una consistente spaziatura all'interno di un token di blocco di chiusura e il token precedente sulla stessa riga. eslint: [`block-spacing`](https://eslint.org/docs/rules/block-spacing)
 
     ```javascript
     // male
@@ -2880,7 +2879,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--comma-spacing"></a>
-  - [19.15](#whitespace--comma-spacing) Avoid spaces before commas and require a space after commas. eslint: [`comma-spacing`](https://eslint.org/docs/rules/comma-spacing)
+  - [19.15](#whitespace--comma-spacing) Evitare gli spazi prima delle virgole e richiedere uno spazio dopo le virgole. eslint: [`comma-spacing`](https://eslint.org/docs/rules/comma-spacing)
 
     ```javascript
     // male
@@ -2893,7 +2892,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--computed-property-spacing"></a>
-  - [19.16](#whitespace--computed-property-spacing) Enforce spacing inside of computed property brackets. eslint: [`computed-property-spacing`](https://eslint.org/docs/rules/computed-property-spacing)
+  - [19.16](#whitespace--computed-property-spacing) Imporre spaziatura all'interno di parentesi quadre di proprietà calcolate. eslint: [`computed-property-spacing`](https://eslint.org/docs/rules/computed-property-spacing)
 
     ```javascript
     // male
@@ -2910,7 +2909,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--func-call-spacing"></a>
-  - [19.17](#whitespace--func-call-spacing) Avoid spaces between functions and their invocations. eslint: [`func-call-spacing`](https://eslint.org/docs/rules/func-call-spacing)
+  - [19.17](#whitespace--func-call-spacing) Evitare spazi tra le funzioni e le loro invocazioni. eslint: [`func-call-spacing`](https://eslint.org/docs/rules/func-call-spacing)
 
     ```javascript
     // male
@@ -2924,7 +2923,7 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--key-spacing"></a>
-  - [19.18](#whitespace--key-spacing) Enforce spacing between keys and values in object literal properties. eslint: [`key-spacing`](https://eslint.org/docs/rules/key-spacing)
+  - [19.18](#whitespace--key-spacing) Imporre spaziatura tra chiavi e valori nelle proprietà di oggetti letterali. eslint: [`key-spacing`](https://eslint.org/docs/rules/key-spacing)
 
     ```javascript
     // male
@@ -2936,25 +2935,25 @@ Altre Guide di Stile
     ```
 
   <a name="whitespace--no-trailing-spaces"></a>
-  - [19.19](#whitespace--no-trailing-spaces) Avoid trailing spaces at the end of lines. eslint: [`no-trailing-spaces`](https://eslint.org/docs/rules/no-trailing-spaces)
+  - [19.19](#whitespace--no-trailing-spaces) Evitare spazi prima della fine delle righe. eslint: [`no-trailing-spaces`](https://eslint.org/docs/rules/no-trailing-spaces)
 
   <a name="whitespace--no-multiple-empty-lines"></a>
-  - [19.20](#whitespace--no-multiple-empty-lines) Avoid multiple empty lines, only allow one newline at the end of files, and avoid a newline at the beginning of files. eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
+  - [19.20](#whitespace--no-multiple-empty-lines) Evitare più righe vuote, consentire solo una riga vuota alla fine dei file, ed evitare righe vuote all'inizio dei file. eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
 
     <!-- markdownlint-disable MD012 -->
     ```javascript
-    // male - multiple empty lines
+    // male - più righe vuote
     var x = 1;
 
 
     var y = 2;
 
-    // male - 2+ newlines at end of file
+    // male - 2+ righe vuote alla fine del file
     var x = 1;
     var y = 2;
 
 
-    // male - 1+ newline(s) at beginning of file
+    // male - 1+ righe vuote all'inizio del file
 
     var x = 1;
     var y = 2;
@@ -2966,12 +2965,12 @@ Altre Guide di Stile
     ```
     <!-- markdownlint-enable MD012 -->
 
-**[⬆ torna all'inizio](#sommario)**
+**[⬆ back to top](#table-of-contents)**
 
-## Commas
+## VIrgole
 
   <a name="commas--leading-trailing"></a><a name="19.1"></a>
-  - [20.1](#commas--leading-trailing) Leading commas: **Nope.** eslint: [`comma-style`](https://eslint.org/docs/rules/comma-style)
+  - [20.1](#commas--leading-trailing) Virgole davanti: **No.** eslint: [`comma-style`](https://eslint.org/docs/rules/comma-style)
 
     ```javascript
     // male
@@ -3006,12 +3005,12 @@ Altre Guide di Stile
     ```
 
   <a name="commas--dangling"></a><a name="19.2"></a>
-  - [20.2](#commas--dangling) Additional trailing comma: **Yup.** eslint: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle)
+  - [20.2](#commas--dangling) Virgola in coda aggiuntiva: **Sì.** eslint: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle)
 
-    > Perche? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don’t have to worry about the [trailing comma problem](https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas) in legacy browsers.
+    > Perchè? Porta maggior chiarezza per il comando git diff. Inoltre i transpiler tipo Babel rimuoveranno la virgola in coda aggiuntiva nel codice oggetto di transpiling il vuol dire che non ci si deve preoccupare del [problema della virgola in coda](https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas) in legacy browsers.
 
     ```diff
-    // male - git diff without trailing comma
+    // male - git diff senza virgola in coda
     const hero = {
          firstName: 'Florence',
     -    lastName: 'Nightingale'
@@ -3019,7 +3018,7 @@ Altre Guide di Stile
     +    inventorOf: ['coxcomb chart', 'modern nursing']
     };
 
-    // bene - git diff with trailing comma
+    // bene - git diff con virgola in coda
     const hero = {
          firstName: 'Florence',
          lastName: 'Nightingale',
@@ -3056,7 +3055,7 @@ Altre Guide di Stile
       lastName,
       inventorOf
     ) {
-      // does nothing
+      // non fa nulla
     }
 
     // bene
@@ -3065,17 +3064,17 @@ Altre Guide di Stile
       lastName,
       inventorOf,
     ) {
-      // does nothing
+      // non fa nulla
     }
 
-    // bene (note that a comma must not appear after a "rest" element)
+    // bene (notare che una virgola non deve apparire dopo un elemento "rest")
     function createHero(
       firstName,
       lastName,
       inventorOf,
       ...heroArgs
     ) {
-      // does nothing
+      // non fa nulla
     }
 
     // male
@@ -3092,7 +3091,7 @@ Altre Guide di Stile
       inventorOf,
     );
 
-    // bene (note that a comma must not appear after a "rest" element)
+    // bene (notare che una virgola non deve apparire dopo un elemento "rest")
     createHero(
       firstName,
       lastName,
@@ -3101,29 +3100,31 @@ Altre Guide di Stile
     );
     ```
 
-**[⬆ torna all'inizio](#sommario)**
+**[⬆ back to top](#table-of-contents)**
 
-## Semicolons
+
+
+## Punti e Virgola
 
   <a name="semicolons--required"></a><a name="20.1"></a>
-  - [21.1](#semicolons--required) **Yup.** eslint: [`semi`](https://eslint.org/docs/rules/semi)
+  - [21.1](#semicolons--required) **Sì.** eslint: [`semi`](https://eslint.org/docs/rules/semi)
 
-    > Perche? When JavaScript encounters a line break without a semicolon, it uses a set of rules called [Automatic Semicolon Insertion](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion) to determine whether it should regard that line break as the end of a statement, and (as the name implies) place a semicolon into your code before the line break if it thinks so. ASI contains a few eccentric behaviors, though, and your code will break if JavaScript misinterprets your line break. These rules will become more complicated as new features become a part of JavaScript. Explicitly terminating your statements and configuring your linter to catch missing semicolons will help prevent you from encountering issues.
+    > Perchè? Quando JavaScript incontra un'interruzione di riga senza un punto e virgola, utilizza una serie di regole chiamate [Inserimento Automatico di Punto e Virgola (ASI)](https://tc39.github.io/ecma262/#sec-automatic-semolon-insertion) per determinare se dovrebbe considerare quell'interruzione di riga  come la fine di una istruzione e (come suggerisce il nome) inserisce un punto e virgola prima dell'interruzione di riga se così lo ritiene. L'ASI contiene alcuni comportamenti eccentrici, tuttavia, e il proprio codice si romperà se JavaScript interpreta erroneamente l'interruzione di riga. Queste regole diventeranno più complicate man mano che le nuove funzionalità diventeranno parte di JavaScript. Terminare esplicitamente le proprie istruzioni e configurare il tuo Linter per catturare i punti e virgola mancanti previene il sorgere di problemi.
 
     ```javascript
-    // male - raises exception
+    // male - solleva eccezione
     const luke = {}
     const leia = {}
     [luke, leia].forEach((jedi) => jedi.father = 'vader')
 
-    // male - raises exception
+    // male - solleva eccezione
     const reaction = "No! That’s impossible!"
     (async function meanwhileOnTheFalcon() {
       // handle `leia`, `lando`, `chewie`, `r2`, `c3p0`
       // ...
     }())
 
-    // male - returns `undefined` instead of the value on the next line - always happens when `return` is on a line by itself becaUsare of ASI!
+    // male - ritorna `undefined` invece del valore nella riga successiva - succede sempre quando `return` is on a line by itself because of ASI!
     function foo() {
       return
         'search your feelings, you know it to be foo'
@@ -3153,34 +3154,34 @@ Altre Guide di Stile
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Type Casting & Coercion
+## Type Casting & Coercizione
 
   <a name="coercion--explicit"></a><a name="21.1"></a>
-  - [22.1](#coercion--explicit) Perform type coercion at the beginning of the statement.
+  - [22.1](#coercion--explicit) Eseguire la coercizione di tipo all'inizio dell'istruzione.
 
   <a name="coercion--strings"></a><a name="21.2"></a>
-  - [22.2](#coercion--strings) Strings: eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
+  - [22.2](#coercion--strings) Stringhe: eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
 
     ```javascript
     // => this.reviewScore = 9;
 
     // male
-    const totalScore = new String(this.reviewScore); // typeof totalScore is "object" not "string"
+    const totalScore = new String(this.reviewScore); // typeof totalScore è "object" non "string"
 
     // male
-    const totalScore = this.reviewScore + ''; // invokes this.reviewScore.valueOf()
+    const totalScore = this.reviewScore + ''; // chiama this.reviewScore.valueOf()
 
     // male
-    const totalScore = this.reviewScore.toString(); // isn’t guaranteed to return a string
+    const totalScore = this.reviewScore.toString(); // il ritorno di una stringa non è garantito
 
     // bene
     const totalScore = String(this.reviewScore);
     ```
 
   <a name="coercion--numbers"></a><a name="21.3"></a>
-  - [22.3](#coercion--numbers) Numbers: Usare `Number` for type casting and `parseInt` always with a radix for parsing strings. eslint: [`radix`](https://eslint.org/docs/rules/radix) [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
+  - [22.3](#coercion--numbers) Numbers: Usare `Number` per type casting e `parseInt` sempre con un radix per analizzare le stringhe. eslint: [`radix`](https://eslint.org/docs/rules/radix) [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
 
-    > Perche? The `parseInt` function produces an integer value dictated by interpretation of the contents of the string argument according to the specified radix. Leading whitespace in string is ignored. If radix is `undefined` or `0`, it is assumed to be `10` except when the number begins with the character pairs `0x` or `0X`, in which case a radix of 16 is assumed. This differs from ECMAScript 3, which merely discouraged (but allowed) octal interpretation. Many implementations have not adopted this behavior as of 2013. And, becaUsare older browsers must be supported, always specify a radix.
+    > Perche? La funzione `parseInt` produce un valore intero dettato dall'interpretazione del contenuto dell'argomento stringa secondo il radix specificato. Spazi bianchi all'inizio della stringa sono ignorati. Se radix è `undefined` o `0`, si assume sia `10` tranne quando il numero inizia con le coppie di caratteri `0x` o `0X`, nel qual caso si assume un radix di 16. Questo differisce da ECMAScript 3, che semplicemente scoraggiato (ma consente) l'interpretazione ottale. Molte implementazioni non hanno adottato questo comportamento a partire dal 2013. E, poiché i browser più vecchi devono essere supportati, specificare sempre un radix.
 
     ```javascript
     const inputValue = '4';
