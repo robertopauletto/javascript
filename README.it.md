@@ -3206,20 +3206,20 @@ Altre Guide di Stile
     ```
 
   <a name="coercion--comment-deviations"></a><a name="21.4"></a>
-  - [22.4](#coercion--comment-deviations) If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to Usare Bitshift for [performance reasons](https://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you’re doing.
+  - [22.4](#coercion--comment-deviations) Se per qualsiasi motivo si sta facendo qualcosa di selvaggio e `parseInt` è un collo di bottiglia e si deve usare  Bitshift per [ragioni di prestazione](https://jsperf.com/coercion-vs-casting/3), Lascia un commento che spiega perché e cosa si sta facendo.
 
     ```javascript
     // bene
     /**
-     * parseInt was the reason my code was slow.
-     * Bitshifting the String to coerce it to a
-     * Number made it a lot faster.
+     * parseInt era la ragione della lentezza del mio codice.
+     * Si applica Bitshifting a String per forzarla in un 
+     * Number lo ha reso molto più veloce.
      */
     const val = inputValue >> 0;
     ```
 
   <a name="coercion--bitwise"></a><a name="21.5"></a>
-  - [22.5](#coercion--bitwise) **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](https://es5.github.io/#x4.3.19), but bitshift operations always return a 32-bit integer ([source](https://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
+  - [22.5](#coercion--bitwise) **Nota:** Usare cautela quando si utilizzano operazioni bitshift. I numeri sono rappresentati come [valori a 64-bit](https://es5.github.io/#x4.3.19), ma le operazioni bitshift ritornano sempre un intero a 32-bit ([fonte](https://es5.github.io/#x11.7)). Bitshift può portare a un comportamento inatteso per gli interi con valori più grandi di 32 bit. [Discussione](https://github.com/airbnb/javascript/issues/109). L'intero a 32-bit più grande è 2,147,483,647:
 
     ```javascript
     2147483647 >> 0; // => 2147483647
@@ -3228,7 +3228,7 @@ Altre Guide di Stile
     ```
 
   <a name="coercion--booleans"></a><a name="21.6"></a>
-  - [22.6](#coercion--booleans) Booleans: eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
+  - [22.6](#coercion--booleans) Booleani: eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
 
     ```javascript
     const age = 0;
@@ -3248,7 +3248,7 @@ Altre Guide di Stile
 ## Convenzioni di Denominazione
 
   <a name="naming--descriptive"></a><a name="22.1"></a>
-  - [23.1](#naming--descriptive) Avoid single letter names. Be descriptive with your naming. eslint: [`id-length`](https://eslint.org/docs/rules/id-length)
+  - [23.1](#naming--descriptive) Evitare nomi a lettera singola. Si sia descrittivi con la propria denominazione. eslint: [`id-length`](https://eslint.org/docs/rules/id-length)
 
     ```javascript
     // male
@@ -3263,7 +3263,7 @@ Altre Guide di Stile
     ```
 
   <a name="naming--camelCase"></a><a name="22.2"></a>
-  - [23.2](#naming--camelCase) Usare camelCase when naming objects, functions, and instances. eslint: [`camelcase`](https://eslint.org/docs/rules/camelcase)
+  - [23.2](#naming--camelCase) Usare camelCase quando si denominano oggetti, funzioni e istanze. eslint: [`camelcase`](https://eslint.org/docs/rules/camelcase)
 
     ```javascript
     // male
@@ -3277,7 +3277,7 @@ Altre Guide di Stile
     ```
 
   <a name="naming--PascalCase"></a><a name="22.3"></a>
-  - [23.3](#naming--PascalCase) Usare PascalCase only when naming constructors or classes. eslint: [`new-cap`](https://eslint.org/docs/rules/new-cap)
+  - [23.3](#naming--PascalCase) Usare PascalCase solo quando si denominano costruttori o classi. eslint: [`new-cap`](https://eslint.org/docs/rules/new-cap)
 
     ```javascript
     // male
@@ -3302,9 +3302,9 @@ Altre Guide di Stile
     ```
 
   <a name="naming--leading-underscore"></a><a name="22.4"></a>
-  - [23.4](#naming--leading-underscore) Do not Usare trailing or leading underscores. eslint: [`no-underscore-dangle`](https://eslint.org/docs/rules/no-underscore-dangle)
+  - [23.4](#naming--leading-underscore) Non Usare trattini di sottolineatura all'inizio o alla fine. eslint: [`no-underscore-dangle`](https://eslint.org/docs/rules/no-underscore-dangle)
 
-    > Perche? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won’t count as breaking, or that tests aren’t needed. tl;dr: if you want something to be “private”, it must not be observably present.
+    > Perche? JavaScript non ha il concetto di privacy nei termini di proprietà o metodi. Sebbene un trattino di sottolineatura all'inizio sia una convenzione comune che significa "privato", in effetti queste proprietà sono completamente pubbliche e, come tali, sono parte del contratto della propria API. Questa convenzione potrebbe portare gli sviluppatori a pensare erroneamente che una modifica non provochi rotture o che i test non sono necessari. tl;dr: se si vuole qualcosa che sia "privato", non deve essere manifestamente presente.
 
     ```javascript
     // male
@@ -3315,14 +3315,14 @@ Altre Guide di Stile
     // bene
     this.firstName = 'Panda';
 
-    // bene, in environments where WeakMaps are available
-    // see https://kangax.github.io/compat-table/es6/#test-WeakMap
+    // bene, in ambienti dove WeakMaps è disponibile
+    // vedere https://kangax.github.io/compat-table/es6/#test-WeakMap
     const firstNames = new WeakMap();
     firstNames.set(this, 'Panda');
     ```
 
   <a name="naming--self-this"></a><a name="22.5"></a>
-  - [23.5](#naming--self-this) Don’t save references to `this`. Usare arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
+  - [23.5](#naming--self-this) Non salvare riferimenti a `this`. Usare funzioni arrow o [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
 
     ```javascript
     // male
@@ -3350,43 +3350,43 @@ Altre Guide di Stile
     ```
 
   <a name="naming--filename-matches-export"></a><a name="22.6"></a>
-  - [23.6](#naming--filename-matches-export) A base filename should exactly match the name of its default export.
+  - [23.6](#naming--filename-matches-export) La base di un nome di file dovrebbe corrispondere esattamente al nome del suo default export.
 
     ```javascript
-    // file 1 contents
+    // file 1 contiene
     class CheckBox {
       // ...
     }
     export default CheckBox;
 
-    // file 2 contents
+    // file 2 contiene
     export default function fortyTwo() { return 42; }
 
-    // file 3 contents
+    // file 3 contiene
     export default function insideDirectory() {}
 
-    // in some other file
+    // in alcuni altri file
     // male
-    import CheckBox from './checkBox'; // PascalCase import/export, camelCase filename
-    import FortyTwo from './FortyTwo'; // PascalCase import/filename, camelCase export
-    import InsideDirectory from './InsideDirectory'; // PascalCase import/filename, camelCase export
+    import CheckBox from './checkBox'; // import/export in PascalCase, nome in camelCase
+    import FortyTwo from './FortyTwo'; // import/nome in PascalCase, import in camelCase
+    import InsideDirectory from './InsideDirectory'; // import/nome in PascalCase, export in camelCase
 
     // male
-    import CheckBox from './check_box'; // PascalCase import/export, snake_case filename
-    import forty_two from './forty_two'; // snake_case import/filename, camelCase export
-    import inside_directory from './inside_directory'; // snake_case import, camelCase export
-    import index from './inside_directory/index'; // requiring the index file explicitly
-    import insideDirectory from './insideDirectory/index'; // requiring the index file explicitly
+    import CheckBox from './check_box'; // import/export in PascalCase, nome in snake_case
+    import forty_two from './forty_two'; // import/nome in snake_case, export in camelCase
+    import inside_directory from './inside_directory'; // import in snake_case import, export in camelCase
+    import index from './inside_directory/index'; // richiedere il file index esplicitamente
+    import insideDirectory from './insideDirectory/index'; // richiedere il file index esplicitamente
 
     // bene
-    import CheckBox from './CheckBox'; // PascalCase export/import/filename
-    import fortyTwo from './fortyTwo'; // camelCase export/import/filename
-    import insideDirectory from './insideDirectory'; // camelCase export/import/directory name/implicit "index"
-    // ^ supports both insideDirectory.js and insideDirectory/index.js
+    import CheckBox from './CheckBox'; // export/import/nome in PascalCase
+    import fortyTwo from './fortyTwo'; // export/import/nome in camelCase 
+    import insideDirectory from './insideDirectory'; // export/import/directory in camelCase  "index" nome/implicito
+    // ^ supporta sia insideDirectory.js che insideDirectory/index.js
     ```
 
   <a name="naming--camelCase-default-export"></a><a name="22.7"></a>
-  - [23.7](#naming--camelCase-default-export) Usare camelCase when you export-default a function. Your filename should be identical to your function’s name.
+  - [23.7](#naming--camelCase-default-export) Usare camelCase quanto si esporta una funzione con export-default. Your nome dovrebbe essere identico al nome della funzione.
 
     ```javascript
     function makeStyleGuide() {
@@ -3397,7 +3397,7 @@ Altre Guide di Stile
     ```
 
   <a name="naming--PascalCase-singleton"></a><a name="22.8"></a>
-  - [23.8](#naming--PascalCase-singleton) Usare PascalCase when you export a constructor / class / singleton / function library / bare object.
+  - [23.8](#naming--PascalCase-singleton) Usare PascalCase quando si esporta un costruttore / classe / singleton / libreria di funzioni / nudi oggetti.
 
     ```javascript
     const AirbnbStyleGuide = {
@@ -3409,9 +3409,9 @@ Altre Guide di Stile
     ```
 
   <a name="naming--Acronyms-and-Initialisms"></a>
-  - [23.9](#naming--Acronyms-and-Initialisms) Acronyms and initialisms should always be all uppercased, or all lowercased.
+  - [23.9](#naming--Acronyms-and-Initialisms) Acronimi e sigle dovrebbero sempre essere tutti in maiuscolo, o tutti in minuscolo.
 
-    > Perche? Names are for readability, not to appease a computer algorithm.
+    > Perche? I nomi sono per leggibilità, non accontentare un algoritmo di computer.
 
     ```javascript
     // male
@@ -3445,11 +3445,11 @@ Altre Guide di Stile
     ```
 
   <a name="naming--uppercase"></a>
-  - [23.10](#naming--uppercase) You may optionally uppercase a constant only if it (1) is exported, (2) is a `const` (it can not be reassigned), and (3) the programmer can trust it (and its nested properties) to never change.
+  - [23.10](#naming--uppercase) Si puà occasionalmente rendere tutta maiuscola una costante solo se (1) è esportata, (2) è una `const` (non può essere riassegnata), e (3) il programmatore può fidarsi del fatto che essa (e le sue proprietà annidate) non cambino mai.
 
-    > Perche? This is an additional tool to assist in situations where the programmer would be unsure if a variable might ever change. UPPERCASE_VARIABLES are letting the programmer know that they can trust the variable (and its properties) not to change.
-    - What about all `const` variables? - This is unnecessary, so uppercasing should not be used for constants within a file. It should be used for exported constants however.
-    - What about exported objects? - Uppercase at the top level of export (e.g. `EXPORTED_OBJECT.key`) and maintain that all nested properties do not change.
+    > Perche?Questo è uno strumento aggiuntivo per aiutare in situazioni in cui il programmatore non sia sicuro se una variabile potrebbe mai cambiare. VARIABILI_IN_MAIUSCOLO fanno sapere al programmatore che può essere sicuro che non saranno mai cambiate (comprese le loro proprietà)
+    - Per quanto riguarda tutte le varibili `const`? - Questo non è necessario, il maiuscolo non dovrebbe essere usato per constanti all'interno di un file. Dovrebbe viceversa essere usato per costanti esportate.
+    - Per quanto riguarda gli oggetti esportati? - Maiuscolo al livello superiore di esportazione (es. `EXPORTED_OBJECT.key`) e assumere che tutte le proprietà nidificate non cambiano.
 
     ```javascript
     // male
@@ -3459,19 +3459,19 @@ Altre Guide di Stile
     export const THING_TO_BE_CHANGED = 'should obviously not be uppercased';
 
     // male
-    export let REASSIGNABLE_VARIABLE = 'do not Usare let with uppercase variables';
+    export let REASSIGNABLE_VARIABLE = 'do not use let with uppercase variables';
 
     // ---
 
-    // allowed but does not supply semantic value
+    // consentito ma non fornisce valore semantico
     export const apiKey = 'SOMEKEY';
 
-    // better in most cases
+    // meglio nella maggior parte dei casi
     export const API_KEY = 'SOMEKEY';
 
     // ---
 
-    // male - unnecessarily uppercases key while adding no semantic value
+    // male - key in maiuscolo non è necessario e non aggiunge valore semantico
     export const MAPPING = {
       KEY: 'value'
     };
@@ -3484,13 +3484,13 @@ Altre Guide di Stile
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Accessors
+## Accessori
 
   <a name="accessors--not-required"></a><a name="23.1"></a>
-  - [24.1](#accessors--not-required) Accessor functions for properties are not required.
+  - [24.1](#accessors--not-required) Le funzioni accessorie per le proprietà non sono richieste.
 
   <a name="accessors--no-getters-setters"></a><a name="23.2"></a>
-  - [24.2](#accessors--no-getters-setters) Do not Usare JavaScript getters/setters as they caUsare unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, Usare `getVal()` and `setVal('hello')`.
+  - [24.2](#accessors--no-getters-setters) Not usare getters/setters JavaScript  in quanto causano effetti collaterali inattesi e sono difficili da testare, manutenere e ragionarci. Viceversa, se si creano funzioni accessorie, usare `getVal()` e `setVal('hello')`.
 
     ```javascript
     // male
@@ -3517,7 +3517,7 @@ Altre Guide di Stile
     ```
 
   <a name="accessors--boolean-prefix"></a><a name="23.3"></a>
-  - [24.3](#accessors--boolean-prefix) If the property/method is a `boolean`, Usare `isVal()` or `hasVal()`.
+  - [24.3](#accessors--boolean-prefix) Se la proprietà/metodo è `boolean`, usare `isVal()` o `hasVal()`.
 
     ```javascript
     // male
@@ -3532,7 +3532,7 @@ Altre Guide di Stile
     ```
 
   <a name="accessors--consistent"></a><a name="23.4"></a>
-  - [24.4](#accessors--consistent) It’s okay to create `get()` and `set()` functions, but be consistent.
+  - [24.4](#accessors--consistent) Va bene creare funzioni `get()` e `set()`, ma si sia consistenti.
 
     ```javascript
     class Jedi {
@@ -3556,7 +3556,7 @@ Altre Guide di Stile
 ## Eventi
 
   <a name="events--hash"></a><a name="24.1"></a>
-  - [25.1](#events--hash) When attaching data payloads to events (whether DOM events or something more proprietary like Backbone events), pass an object literal (also known as a "hash") instead of a raw value. This allows a subsequent contributor to add more data to the event payload without finding and updating every handler for the event. For example, instead of:
+  - [25.1](#events--hash) Quando si attaccano payload di dati ad eventi (siano essi eventi DOM o qualcosa di più proprietario cone gli eventi Backbone), passare un oggetto letterale (noto anche come "hash") invece di un valore grezzo. Ciò consente di aggiungere a un contributore successivo maggiori dati al payload dell'evento senza dover cercare e aggiornare il gestore di evento per l'evento. Per esempio, invece di:
 
     ```javascript
     // male
@@ -3569,7 +3569,7 @@ Altre Guide di Stile
     });
     ```
 
-    prefer:
+    preferire:
 
     ```javascript
     // bene
@@ -3587,7 +3587,7 @@ Altre Guide di Stile
 ## jQuery
 
   <a name="jquery--dollar-prefix"></a><a name="25.1"></a>
-  - [26.1](#jquery--dollar-prefix) Prefix jQuery object variables with a `$`.
+  - [26.1](#jquery--dollar-prefix) Prefisare le variabili per gli oggetti jQuery con un `$`.
 
     ```javascript
     // male
@@ -3601,7 +3601,7 @@ Altre Guide di Stile
     ```
 
   <a name="jquery--cache"></a><a name="25.2"></a>
-  - [26.2](#jquery--cache) Cache jQuery lookups.
+  - [26.2](#jquery--cache) Mettere in cache le ricerche jQuery.
 
     ```javascript
     // male
@@ -3629,10 +3629,10 @@ Altre Guide di Stile
     ```
 
   <a name="jquery--queries"></a><a name="25.3"></a>
-  - [26.3](#jquery--queries) For DOM queries Usare Cascading `$('.sidebar ul')` or parent > child `$('.sidebar > ul')`. [jsPerf](https://jsperf.com/jquery-find-vs-context-sel/16)
+  - [26.3](#jquery--queries) Per ricerche DOM usare termine a cascata `$('.sidebar ul')` o genitore > figlio `$('.sidebar > ul')`. [jsPerf](https://jsperf.com/jquery-find-vs-context-sel/16)
 
   <a name="jquery--find"></a><a name="25.4"></a>
-  - [26.4](#jquery--find) Usare `find` with scoped jQuery object queries.
+  - [26.4](#jquery--find) Usare `find` con query su oggetti jQuery con ambito.
 
     ```javascript
     // male
@@ -3653,52 +3653,52 @@ Altre Guide di Stile
 
 **[⬆ torna all'inizio](#sommario)**
 
-## ECMAScript 5 Compatibility
+## Compatibilità ECMAScript 5
 
   <a name="es5-compat--kangax"></a><a name="26.1"></a>
-  - [27.1](#es5-compat--kangax) Refer to [Kangax](https://twitter.com/kangax/)’s ES5 [compatibility table](https://kangax.github.io/es5-compat-table/).
+  - [27.1](#es5-compat--kangax) Fare riferimento alla [tabella di compatibilità](https://kangax.github.io/es5-compat-table/)  ES5 di [Kangax](https://twitter.com/kangax/).
 
 **[⬆ torna all'inizio](#sommario)**
 
 <a name="ecmascript-6-styles"></a>
-## ECMAScript 6+ (ES 2015+) Styles
+## Stili ECMAScript 6+ (ES 2015+)
 
   <a name="es6-styles"></a><a name="27.1"></a>
-  - [28.1](#es6-styles) This is a collection of links to the various ES6+ features.
+  - [28.1](#es6-styles) Questa è una raccolta di link per le varie funzionalità ES6.
 
-1. [Arrow Functions](#arrow-functions)
-1. [Classes](#classes--constructors)
-1. [Object Shorthand](#es6-object-shorthand)
-1. [Object Concise](#es6-object-concise)
-1. [Object Computed Properties](#es6-computed-properties)
-1. [Template Strings](#es6-template-literals)
-1. [Destructuring](#destructuring)
-1. [Default Parameters](#es6-default-parameters)
+1. [Funzioni Functions](#arrow-functions)
+1. [Classi](#classes--constructors)
+1. [Sintassi Scorciatoia per Oggetto](#es6-object-shorthand)
+1. [Oggetto Conciso](#es6-object-concise)
+1. [Oggetto con Proprietà Calcolate](#es6-computed-properties)
+1. [Template di Stringhe](#es6-template-literals)
+1. [Destrutturazione](#destructuring)
+1. [Parametri Predefiniti](#es6-default-parameters)
 1. [Rest](#es6-rest)
-1. [Array Spreads](#es6-array-spreads)
-1. [Let and Const](#references)
-1. [Exponentiation Operator](#es2016-properties--exponentiation-operator)
-1. [Iterators and Generators](#iterators-and-generators)
-1. [Modules](#modules)
+1. [Spread di Array](#es6-array-spreads)
+1. [Let e Const](#references)
+1. [Operatori Esponenziali](#es2016-properties--exponentiation-operator)
+1. [Iteratori e Generatori](#iterators-and-generators)
+1. [Moduli](#modules)
 
   <a name="tc39-proposals"></a>
-  - [28.2](#tc39-proposals) Do not Usare [TC39 proposals](https://github.com/tc39/proposals) that have not reached stage 3.
+  - [28.2](#tc39-proposals) Non usare le [proposte TC39](https://github.com/tc39/proposals) che non hanno raggiunto il livello 3.
 
-    > Perche? [They are not finalized](https://tc39.github.io/process-document/), and they are subject to change or to be withdrawn entirely. We want to Usare JavaScript, and proposals are not JavaScript yet.
+    > Perche? [Non sono finalizzate](https://tc39.github.io/process-document/), e sono soggette a cambiamenti o al completo ritiro. Si vuole usare Javascript, e le proposte non sono ancora Javascript.
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Standard Library
+## Libreria Standard
 
-  The [Standard Library](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects)
-  contains utilities that are functionally broken but remain for legacy reasons.
+  The [Libreria Standard](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects)
+  contiene utility che sono funzionalmente rotte ma rimangono per ragioni di retrocompatibilità.
 
   <a name="standard-library--isnan"></a>
-  - [29.1](#standard-library--isnan) Usare `Number.isNaN` instead of global `isNaN`.
+  - [29.1](#standard-library--isnan) Usare `Number.isNaN` invece del globale `isNaN`.
     eslint: [`no-restricted-globals`](https://eslint.org/docs/rules/no-restricted-globals)
 
-    > Perche? The global `isNaN` coerces non-numbers to numbers, returning true for anything that coerces to NaN.
-    > If this behavior is desired, make it explicit.
+    > Perche? Il globale `isNaN` forza non numeri a numeri, ritornando true per qualunque cosa che possa essere forzata a NaN.
+    > Se si desidera questo comportamento, renderlo esplicito.
 
     ```javascript
     // male
@@ -3711,11 +3711,11 @@ Altre Guide di Stile
     ```
 
   <a name="standard-library--isfinite"></a>
-  - [29.2](#standard-library--isfinite) Usare `Number.isFinite` instead of global `isFinite`.
+  - [29.2](#standard-library--isfinite) Usare `Number.isFinite` invece del globale `isFinite`.
     eslint: [`no-restricted-globals`](https://eslint.org/docs/rules/no-restricted-globals)
 
-    > Perche? The global `isFinite` coerces non-numbers to numbers, returning true for anything that coerces to a finite number.
-    > If this behavior is desired, make it explicit.
+    > Perche? Il globale `isFinite` forza non-numeri in numeri, returning true per tutto ciò che possa essere forzato a un numero finito.
+    > Se si desidera questo comportamento, renderlo esplicito.
 
     ```javascript
     // male
@@ -3728,10 +3728,10 @@ Altre Guide di Stile
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Testing
+## Test
 
   <a name="testing--yup"></a><a name="28.1"></a>
-  - [30.1](#testing--yup) **Yup.**
+  - [30.1](#testing--yup) **Sì.**
 
     ```javascript
     function foo() {
@@ -3740,17 +3740,17 @@ Altre Guide di Stile
     ```
 
   <a name="testing--for-real"></a><a name="28.2"></a>
-  - [30.2](#testing--for-real) **No, but seriously**:
-    - Whichever testing framework you use, you should be writing tests!
-    - Strive to write many small pure functions, and minimize where mutations occur.
-    - Be cautious about stubs and mocks - they can make your tests more brittle.
-    - We primarily Usare [`mocha`](https://www.npmjs.com/package/mocha) and [`jest`](https://www.npmjs.com/package/jest) at Airbnb. [`tape`](https://www.npmjs.com/package/tape) is also used occasionally for small, separate modules.
-    - 100% test coverage is a good goal to strive for, even if it’s not always practical to reach it.
-    - Whenever you fix a bug, _write a regression test_. A bug fixed without a regression test is almost certainly going to break again in the future.
+  - [30.2](#testing--for-real) **No, ma seriamente**:
+    - Qualunque infrastruttura di test si utilizzi, si dovrebbero scrivere test!
+    - Sforzarsi di scrivere molte piccole funzioni pure, e minimizzare dove si verificano mutazioni.
+    - Si usi cautela con stub e mock - possono rendere i tuoi test più fragili.
+    - Noi utilizziamo principlamente [`mocha`](https://www.npmjs.com/package/mocha) e [`jest`](https://www.npmjs.com/package/jest) in Airbnb. [`tape`](https://www.npmjs.com/package/tape) è usato occasionalmente per piccoli moduli separati.
+    - La copertura del 100% di test è un buon obiettivo da sforzarsi di raggiungere, anche se non è sempre pratico da raggiungere.
+    - Ogniqualvolta si sistemi un bug, _scrivere un test di regressione_. Un bug sistemato senza un test di regressione quasi certamente si riferificherà in futuro.
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Performance
+## Prestazioni
 
   - [On Layout & Web Performance](https://www.kellegous.com/j/2013/01/26/layout-performance/)
   - [String vs Array Concat](https://jsperf.com/string-vs-array-concat/2)
@@ -3764,27 +3764,27 @@ Altre Guide di Stile
 
 **[⬆ torna all'inizio](#sommario)**
 
-## Resources
+## Risorse
 
-**Learning ES6+**
+**Imparare ES6+**
 
-  - [Latest ECMA spec](https://tc39.github.io/ecma262/)
+  - [Le specifiche ECMA più recenti](https://tc39.github.io/ecma262/)
   - [ExploringJS](https://exploringjs.com/)
-  - [ES6 Compatibility Table](https://kangax.github.io/compat-table/es6/)
-  - [Comprehensive Overview of ES6 Features](http://es6-features.org/)
+  - [Tabella di Compatibilità ES6](https://kangax.github.io/compat-table/es6/)
+  - [Panoramica completa delle Funzionalità ES8](http://es6-features.org/)
 
-**Read This**
+**Leggere questo**
 
   - [Standard ECMA-262](https://www.ecma-international.org/ecma-262/6.0/index.html)
 
-**Tools**
+**Strumenti**
 
-  - Code Style Linters
+  - Linter per Stile di Codice
     - [ESlint](https://eslint.org/) - [Airbnb Style .eslintrc](https://github.com/airbnb/javascript/blob/master/linters/.eslintrc)
     - [JSHint](https://jshint.com/) - [Airbnb Style .jshintrc](https://github.com/airbnb/javascript/blob/master/linters/.jshintrc)
   - Neutrino Preset - [@neutrinojs/airbnb](https://neutrinojs.org/packages/airbnb/)
 
-**Other Style Guides**
+**Altre Guide di Stile**
 
   - [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
   - [Google JavaScript Style Guide (Old)](https://google.github.io/styleguide/javascriptguide.xml)
@@ -3792,14 +3792,14 @@ Altre Guide di Stile
   - [Principles of Writing Consistent, Idiomatic JavaScript](https://github.com/rwaldron/idiomatic.js)
   - [StandardJS](https://standardjs.com)
 
-**Other Styles**
+**Altri Stili**
 
   - [Naming this in nested functions](https://gist.github.com/cjohansen/4135065) - Christian Johansen
   - [Conditional Callbacks](https://github.com/airbnb/javascript/issues/52) - Ross Allen
   - [Popular JavaScript Coding Conventions on GitHub](http://sideeffect.kr/popularconvention/#javascript) - JeongHoon Byun
   - [Multiple var statements in JavaScript, not superfluous](https://benalman.com/news/2012/05/multiple-var-statements-javascript/) - Ben Alman
 
-**Further Reading**
+**Ulteriori Letture**
 
   - [Understanding JavaScript Closures](https://javascriptweblog.wordpress.com/2010/10/25/understanding-javascript-closures/) - Angus Croll
   - [Basic JavaScript for the impatient programmer](https://www.2ality.com/2013/06/basic-javascript.html) - Dr. Axel Rauschmayer
@@ -3807,7 +3807,7 @@ Altre Guide di Stile
   - [ES6 Features](https://github.com/lukehoban/es6features) - Luke Hoban
   - [Frontend Guidelines](https://github.com/bendc/frontend-guidelines) - Benjamin De Cock
 
-**Books**
+**Libri**
 
   - [JavaScript: The Good Parts](https://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) - Douglas Crockford
   - [JavaScript Patterns](https://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752) - Stoyan Stefanov
@@ -3826,7 +3826,7 @@ Altre Guide di Stile
   - [Eloquent JavaScript](https://eloquentjavascript.net/) - Marijn Haverbeke
   - [You Don’t Know JS: ES6 & Beyond](https://shop.oreilly.com/product/0636920033769.do) - Kyle Simpson
 
-**Blogs**
+**Blog**
 
   - [JavaScript Weekly](https://javascriptweekly.com/)
   - [JavaScript, JavaScript...](https://javascriptweblog.wordpress.com/)
@@ -3838,16 +3838,16 @@ Altre Guide di Stile
   - [Dmitry Baranovskiy](http://dmitry.baranovskiy.com/)
   - [nettuts](https://code.tutsplus.com/?s=javascript)
 
-**Podcasts**
+**Podcast**
 
   - [JavaScript Air](https://javascriptair.com/)
   - [JavaScript Jabber](https://devchat.tv/js-jabber/)
 
 **[⬆ torna all'inizio](#sommario)**
 
-## In the Wild
+## Là Fuori
 
-  This is a list of organizations that are using this style guide. Send us a pull request and we'll add you to the list.
+  Questo è un elenco di organizzazioni che utilizzano questa guida di stile. Inviare una richiesta pull e si verrà aggiunti all'elenco.
 
   - **123erfasst**: [123erfasst/javascript](https://github.com/123erfasst/javascript)
   - **4Catalyzer**: [4Catalyzer/javascript](https://github.com/4Catalyzer/javascript)
@@ -3941,27 +3941,6 @@ Altre Guide di Stile
   - **ZocDoc**: [ZocDoc/javascript](https://github.com/ZocDoc/javascript)
 
 **[⬆ torna all'inizio](#sommario)**
-
-## Translation
-
-  This style guide is also available in other languages:
-
-  - ![br](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Brazilian Portuguese**: [armoucar/javascript-style-guide](https://github.com/armoucar/javascript-style-guide)
-  - ![bg](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Bulgaria.png) **Bulgarian**: [borislavvv/javascript](https://github.com/borislavvv/javascript)
-  - ![ca](https://raw.githubusercontent.com/fpmweb/javascript-style-guide/master/img/catala.png) **Catalan**: [fpmweb/javascript-style-guide](https://github.com/fpmweb/javascript-style-guide)
-  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [lin-123/javascript](https://github.com/lin-123/javascript)
-  - ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Chinese (Traditional)**: [jigsawye/javascript](https://github.com/jigsawye/javascript)
-  - ![fr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/France.png) **French**: [nmussy/javascript-style-guide](https://github.com/nmussy/javascript-style-guide)
-  - ![de](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Germany.png) **German**: [timofurrer/javascript-style-guide](https://github.com/timofurrer/javascript-style-guide)
-  - ![it](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**: [sinkswim/javascript-style-guide](https://github.com/sinkswim/javascript-style-guide)
-  - ![jp](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Japan.png) **Japanese**: [mitsuruog/javascript-style-guide](https://github.com/mitsuruog/javascript-style-guide)
-  - ![kr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/South-Korea.png) **Korean**: [ParkSB/javascript-style-guide](https://github.com/ParkSB/javascript-style-guide)
-  - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [leonidlebedev/javascript-airbnb](https://github.com/leonidlebedev/javascript-airbnb)
-  - ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) **Spanish**: [paolocarrasco/javascript-style-guide](https://github.com/paolocarrasco/javascript-style-guide)
-  - ![th](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Thailand.png) **Thai**: [lvarayut/javascript-style-guide](https://github.com/lvarayut/javascript-style-guide)
-  - ![tr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Turkey.png) **Turkish**: [eraycetinay/javascript](https://github.com/eraycetinay/javascript)
-  - ![ua](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Ukraine.png) **Ukrainian**: [ivanzusko/javascript](https://github.com/ivanzusko/javascript)
-  - ![vn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Vietnam.png) **Vietnam**: [dangkyokhoang/javascript-style-guide](https://github.com/dangkyokhoang/javascript-style-guide)
 
 ## The JavaScript Style Guide Guide
 
